@@ -25,7 +25,7 @@ View all your social feeds in one place!
 - Express 4.13.4
 - Angular
 
-<!-- ## Development -->
+## Development
 
 ### Installing Dependencies
 
