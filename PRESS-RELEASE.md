@@ -1,4 +1,5 @@
-# Project Name #
+# Feed Fuse #
+
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -16,29 +17,29 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+## Description ##
+View all of your social feeds in one place. Anyone using social media will be able to save time logging into different sites to check their feeds because on Feed Fuse you can view all of them in one place.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+Feed Fuse combines all of your social media feeds into one.
 
 ## Problem ##
-  > Describe the problem your product solves.
+Switching between different social media accounts is a waste of time.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+Feed Fuse weaves them all into one convenient feeds.
 
-## Quote from You ##
+<!-- ## Quote from You ##
   > A quote from a spokesperson in your company.
+  Feed Fuse combines all of your social media feeds into one. -->
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+Authorize all of your social media accounts and instantly view all of your feeds in one spot.
 
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+## Testimonials ##
+"Feed Fuse lets me view all of my social media feeds at the same time which saves me tons of time switching between sites." - John D.
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## Learn More ##
+http://www.feedfuse.com
+  
+  
