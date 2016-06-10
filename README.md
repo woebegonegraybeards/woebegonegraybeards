@@ -18,16 +18,14 @@ View all your social feeds in one place!
 1. [Team](#team)
 1. [Contributing](#contributing)
 
-## Usage
-
-> Some usage instructions
+<!-- ## Usage -->
 
 ## Requirements
 
 - Express 4.13.4
 - Angular
 
-## Development
+<!-- ## Development -->
 
 ### Installing Dependencies
 
