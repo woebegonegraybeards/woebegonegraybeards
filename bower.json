@@ -1,0 +1,23 @@
+{
+  "name": "feedfuse",
+  "description": "View all your social media in one feed",
+  "main": "index.js",
+  "authors": [
+    "Brett Celestre",
+    "Andrew Tsao"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/woebegonegraybeards/feedfuse",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "latest",
+    "angular-animate": "latest"
+  }
+}
