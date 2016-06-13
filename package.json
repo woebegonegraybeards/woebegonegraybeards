@@ -1,0 +1,31 @@
+{
+  "name": "feedfuse",
+  "version": "1.0.0",
+  "description": "View all your social media in one feed",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woebegonegraybeards/feedfuse.git"
+  },
+  "author": "Brett Celestre, Andrew Tsao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/woebegonegraybeards/feedfuse/issues"
+  },
+  "homepage": "https://github.com/woebegonegraybeards/feedfuse#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "cssnano": "^3.7.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.1.0",
+    "gulp-postcss": "^6.1.1"
+  }
+}
