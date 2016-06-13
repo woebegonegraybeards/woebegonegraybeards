@@ -14,29 +14,26 @@ app.use(bodyParser.json());                                       // parse appli
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));   // parse application/vnd.api+json as json
 app.use(bodyParser.urlencoded({ extended: true }));               // parse application/x-www-form-urlencoded
 app.use(methodOverride('X-HTTP-Method-Override'));  // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
+// app.use(express.static(__dirname + './client'));     // Set the static file location to /client
 app.use(express.static(__dirname + './client'));     // Set the static file location to /client
 
 // Creates an instance of an express router
-var router = express.Router();
-// Sets up a User Router
-// var twitterRouter = express.Router();
-// var instagramRouter = express.Router();
-// var facebookRouter = express.Router();
+var router            = express.Router();
+var twitterRouter     = express.Router();
+var instagramRouter   = express.Router();
+var facebookRouter    = express.Router();
 
 // Prefixes all routes with /api
 app.use('/api', router);
-// Use user router for all user request
-// app.use('/api/users', userRouter);
+app.use('/api/twitter', twitterRouter);
+app.use('/api/instagram', instagramRouter);
+app.use('/api/facebook', facebookRouter);
+
 // Configures our routes
 require('./routes/routes.js')(app);
-
-
-// Injects our routers into their respective route files
-// require('./routes/twitter.js')(twitterRouter);
-// require('./routes/instagram.js')(instagramRouter);
-// require('./routes/facebook.js')(facebookRouter);
-
-
+require('./routes/twitter.js')(app);
+require('./routes/instagram.js')(app);
+require('./routes/facebook.js')(app);
 
 // Starts app
 app.listen(port);

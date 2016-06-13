@@ -4,8 +4,9 @@
 module.exports = function(app) {
 
   // Handles GET requests
-  app.get('/api/words', function(req, res) {
-    //
+  app.get('/api/twitter', function(req, res) {
+    console.log('api twitter');
+    res.send(200, 'api twitter response');
   });
 
 };
