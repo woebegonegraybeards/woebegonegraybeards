@@ -24,11 +24,11 @@ app.use('/api', router);
 // Use user router for all user request
 app.use('/api/users', userRouter);
 // Injects our routers into their respective route files
-require('./routes/twitter')(userRouter);
-require('./routes/instagram')(userRouter);
-require('./routes/facebook')(userRouter);
+// require('/routes/twitter.js')(userRouter);
+// require('./routes/instagram.js')(userRouter);
+// require('./routes/facebook.js')(userRouter);
 // Configures our routes
-require('./routes/route')(app);
+require('./routes/routes.js')(app);
 
 // Starts app
 app.listen(port);
