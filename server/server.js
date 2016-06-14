@@ -20,9 +20,10 @@ passport.use(new TwitterStrategy({
   callbackURL: "http://127.0.0.1:5000/auth/twitter/callback"
 },
   function(token, tokenSecret, profile, cb) {
-    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+    // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+    //   return cb(err, user);
+    // });
+    return cb(null, profile);
   }
 ));
 
