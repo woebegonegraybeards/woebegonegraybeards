@@ -15,7 +15,7 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 passport.use(new TwitterStrategy({
   consumerKey: Config.twitterConfig.key,
   consumerSecret: Config.twitterConfig.secret,
-  callbackURL: "http://localhost:5000/auth/twitter/callback"
+  callbackURL: "http://127.0.0.1:5000/auth/twitter/callback"
 },
   function(token, tokenSecret, profile, cb) {
     User.findOrCreate({ twitterId: profile.id }, function (err, user) {
