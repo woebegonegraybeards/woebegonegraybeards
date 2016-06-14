@@ -1,5 +1,6 @@
 var ff = angular.module('feedfuse', [
   'ff.controllers',
+  'ff.services',
   'ui.router',
   'ngAnimate'
 ]);
@@ -15,11 +16,11 @@ ff.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $url
       templateUrl: 'views/home.html',
       controller: 'MainController'
     })
-    .state('test', {
-      url: '/test',
+    .state('twitter', {
+      url: '/auth/twitter',
       // abstract: true,
       templateUrl: 'index.html',
-      controller: 'MainController'
+      controller: 'AuthController'
     });
 
 }]);
