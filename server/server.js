@@ -59,8 +59,11 @@ var facebookRouter    = express.Router();
 // Prefixes all routes with /api
 app.use('/api', router);
 app.use('/auth/twitter', twitterRouter);
+app.use('/api/twitter', twitterRouter);
 app.use('/auth/instagram', instagramRouter);
+app.use('/api/instagram', instagramRouter);
 app.use('/auth/facebook', facebookRouter);
+app.use('/api/facebook', facebookRouter);
 
 // Configures our routes
 require('./routes/routes.js')(app);
