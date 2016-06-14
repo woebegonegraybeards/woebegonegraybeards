@@ -15,12 +15,6 @@ ff.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $url
       // abstract: true,
       templateUrl: 'views/home.html',
       controller: 'MainController'
-    })
-    .state('twitter', {
-      url: '/auth/twitter',
-      // abstract: true,
-      templateUrl: 'index.html',
-      controller: 'AuthController'
     });
 
 }]);

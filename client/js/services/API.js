@@ -1,14 +1,20 @@
 angular.module('ff.services', [])
 
 .service('Twitter', function($q, $http) {
-  var auth = function() {
-    console.log('Twitter auth API call');
-    return $http.get('/auth/twitter').then(function(data) {
+  var getTimeline = function() {
+    return $http({
+      method: 'GET',
+      url: 'https://api.twitter.com/1.1/statuses/home_timeline.json'
+    }).then(function(data) {
+      // console.log(data);
       return data;
-    });
+    }, function(error) {
+      // console.error(error);
+      return error;
+    })
   };
 
   return {
-    auth: auth
+    getTimeline: getTimeline
   };
 });
