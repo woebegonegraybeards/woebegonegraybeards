@@ -2,8 +2,8 @@
 // server/server.js
 
 var express         = require('express');
-var express-session = require('express-session');
-var cookie-parser   = require('cookie-parser');
+var expressSession  = require('express-session');
+var cookieParser    = require('cookie-parser');
 var app             = express();
 var bodyParser      = require('body-parser');
 var morgan          = require('morgan');       // used for logging incoming request
