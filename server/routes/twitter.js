@@ -1,8 +1,9 @@
 
 // server/routes/twitter.js
 
-var express   = require('express');
-var passport  = require('passport');
+var express             = require('express');
+var passport            = require('passport');
+var connectEnsureLogin  = require('connect-ensure-login');
   
 module.exports = function(app) {
 
