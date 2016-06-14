@@ -1,11 +1,36 @@
 
 // server/server.js
 
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
-var morgan         = require('morgan');       // used for logging incoming request
-var methodOverride = require('method-override');
+var express         = require('express');
+var app             = express();
+var bodyParser      = require('body-parser');
+var morgan          = require('morgan');       // used for logging incoming request
+var methodOverride  = require('method-override');
+var Config          = require('./config/config');  // Contains API Keys
+var passport        = require('passport');
+var TwitterStrategy = require('passport-twitter').Strategy;
+
+// Configure the Twitter strategy for use by Passport.
+    // May need to move this to twitter.js route file
+passport.use(new TwitterStrategy({
+  consumerKey: Config.twitterConfig.key,
+  consumerSecret: Config.twitterConfig.secret,
+  callbackURL: "http://localhost:5000/auth/twitter/callback"
+},
+  function(token, tokenSecret, profile, cb) {
+    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+      return cb(err, user);
+    });
+  }
+));
+
+// Configure Passport authenticated session persistence.
+passport.serializeUser(function(user, cb) {
+  cb(null, user);
+});
+passport.deserializeUser(function(obj, cb) {
+  cb(null, obj);
+});
 
 var port = process.env.PORT || 5000;
 
@@ -25,9 +50,9 @@ var facebookRouter    = express.Router();
 
 // Prefixes all routes with /api
 app.use('/api', router);
-app.use('/api/twitter', twitterRouter);
-app.use('/api/instagram', instagramRouter);
-app.use('/api/facebook', facebookRouter);
+app.use('/auth/twitter', twitterRouter);
+app.use('/auth/instagram', instagramRouter);
+app.use('/auth/facebook', facebookRouter);
 
 // Configures our routes
 require('./routes/routes.js')(app);
