@@ -20,7 +20,10 @@
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "method-override": "^2.3.6",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "passport-facebook": "^2.1.1",
+    "passport-instagram": "^1.0.0",
+    "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
