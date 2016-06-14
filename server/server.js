@@ -15,7 +15,7 @@ var TwitterStrategy = require('passport-twitter').Strategy;
 passport.use(new TwitterStrategy({
   consumerKey: Config.twitterConfig.key,
   consumerSecret: Config.twitterConfig.secret,
-  callbackURL: "http://localhost:5000/auth/twitter/callback"
+  callbackURL: "http://127.0.0.1:5000/auth/twitter/callback"
 },
   function(token, tokenSecret, profile, cb) {
     User.findOrCreate({ twitterId: profile.id }, function (err, user) {
@@ -41,6 +41,11 @@ app.use(bodyParser.urlencoded({ extended: true }));               // parse appli
 app.use(methodOverride('X-HTTP-Method-Override'));  // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 // app.use(express.static(__dirname + './client'));     // Set the static file location to /client
 app.use(express.static('client'));     // Set the static file location to /client
+app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+
+// Initialize Passport and restore auth state, if any, from the session
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Creates an instance of an express router
 var router            = express.Router();
