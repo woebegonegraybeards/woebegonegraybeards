@@ -31,6 +31,8 @@ results
 npm-debug.log
 node_modules
 
+### Config ###
+**/config/config.js
 
 ### Bower ###
 **/bower_components/
