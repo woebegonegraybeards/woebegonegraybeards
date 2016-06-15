@@ -4,7 +4,7 @@ angular.module('ff.services', [])
   var getTimeline = function() {
     return $http({
       method: 'GET',
-      url: 'https://api.twitter.com/1.1/statuses/home_timeline.json'
+      url: '/api/twitter'
     }).then(function(data) {
       // console.log(data);
       return data;
