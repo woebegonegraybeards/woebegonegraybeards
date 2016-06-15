@@ -1,6 +1,5 @@
 
 // server/routes/routes.js
-var state = false;
 
 module.exports = function(app) {
 
@@ -12,30 +11,24 @@ module.exports = function(app) {
   
   // oauth test
   app.get('/feed', function(req, res) {
-    console.log('/feed | req.session.oauth', req.session.oauth);
+    var allData = [];
+    var instagramData = [];
+    var twitterData = [];
+    console.log('/feed | req.session', req.session);
     res.send(200, '/feed | whats up');
+    
+    res.json(allData);    // Sends 
   });
   
   app.get('/printSession', function(req, res) {
-    console.log('/printSession | req.session.oauth', req.session.oauth);
+    console.log('/printSession | req.session.oauth', req.session);
     // res.send(200, '/feed | whats up');
     res.send(200, 'print session');
   });
-  
-  app.get('/', function(req, res){
-    console.log('/login ran: ');
-    if ( !state ) {
-      console.log('oauth session init ==================================');
-      req.session.oauth = {};                        // Creates oauth session object
-      state = true;
-    }
-    res.redirect('/login');
-  });
-  
-  
+    
   // Front End Routes - handle all angular requests
   // app.get('*', function(req, res) {
-  app.get('/login', function(req, res) {
+  app.get('/', function(req, res) {
     // alert('/');
     console.log('/========================YEEEEE========================');
     res.sendfile('./client/index.html'); // load our public/index.html file

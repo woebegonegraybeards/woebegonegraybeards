@@ -12,7 +12,7 @@ ff.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $url
   
   $stateProvider
     .state('home', {
-      url: '/login',
+      url: '/',
       // abstract: true,
       templateUrl: 'views/home.html',
       controller: 'LoginController'
