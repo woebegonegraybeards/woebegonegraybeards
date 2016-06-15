@@ -1,29 +1,17 @@
-/* BASE STYLES */
-$base-font-color: $dark-gray;
-$base-font-size: 16px;
-$base-font-stack: $helvetica-font-stack;
-$base-font-weight: $normal-weight;
-$base-line-height: 1.5;
-
 
 /* COLORS */
-$primary-color: $orange;
-
 $blue: #6495ed;
 $blue-darker: #4279cd;
 $red: #dc143c;
-$light-red: lighten($red, 50%);
 $green: #2ecc71;
-$light-green: lighten($green, 20%);
 $orange: #FF3A00;
 $yellow: #edb211;
-$light-yellow: lighten($yellow, 42%);
 $slate: #565a5c;
+$darkest-gray: color(#000 w(+20%));
+$darker-gray: color(#000 w(+40%));
 $gray: #666;
-$medium-gray: darken($gray, 15%);
-$dark-gray: darken($gray, 30%);
-$light-gray: lighten($gray, 25%);
-$white-gray: lighten($gray, 50%);
+$lighter-gray: color(#fff w(-40%));
+$lightest-gray: color(#fff w(-20%));
 
 /* FONT WEIGHTS */
 $light-weight: 300;
@@ -46,10 +34,17 @@ $serif: $merriweather-font-stack;
 $mono: $consolas-font-stack;
 
 
+/* BASE STYLES */
+$base-font-color: $darker-gray;
+$base-font-size: 16px;
+$base-font-stack: $helvetica-font-stack;
+$base-font-weight: $normal-weight;
+$base-line-height: 1.5;
 
+$primary-color: $blue;
 
 /* TYPOGRAPHY */
-$header-color: $medium-gray;
+$header-color: #000;
 $header-font-family: $bebas-font-stack;
 $header-sizes: (
   mobile: (

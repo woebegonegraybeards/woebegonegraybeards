@@ -1,13 +1,11 @@
 @import '_variables';
-/*@import '_typography';*/
+@import '_typography';
 
 @reset-global mobile;
 
 body {
-  /*@extend %typography;*/
-
   background: $body-bg;
-  color: $text-primary;
+  color: $blue;
   font-family: $base-font-stack;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
@@ -15,6 +13,8 @@ body {
   min-width: 320px;
   z-index: 0;
 }
+
+
 
 .container {
   margin: 0 auto;
