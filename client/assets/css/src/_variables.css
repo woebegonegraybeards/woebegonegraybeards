@@ -1,4 +1,14 @@
-/* DEFAULT */
+/* BASE STYLES */
+$base-font-color: $dark-gray;
+$base-font-size: 16px;
+$base-font-stack: $helvetica-font-stack;
+$base-font-weight: $normal-weight;
+$base-line-height: 1.5;
+
+
+/* COLORS */
+$primary-color: $orange;
+
 $blue: #6495ed;
 $blue-darker: #4279cd;
 $red: #dc143c;
@@ -14,10 +24,14 @@ $medium-gray: darken($gray, 15%);
 $dark-gray: darken($gray, 30%);
 $light-gray: lighten($gray, 25%);
 $white-gray: lighten($gray, 50%);
+
+/* FONT WEIGHTS */
 $light-weight: 300;
 $normal-weight: 400;
 $semibold-weight: 500;
 $bold-weight: 700;
+
+/* FONT STACKS */
 $helvetica-font-stack: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $oswald-font-stack: "Oswald", sans-serif;
 $roboto-font-stack: "Roboto", sans-serif;
@@ -31,16 +45,7 @@ $sans-serif: $helvetica-font-stack;
 $serif: $merriweather-font-stack;
 $mono: $consolas-font-stack;
 
-/* BASE STYLES */
-$base-font-color: $dark-gray;
-$base-font-size: 16px;
-$base-font-stack: $helvetica-font-stack;
-$base-font-weight: $normal-weight;
-$base-line-height: 1.5;
 
-
-/* COLORS */
-$primary-color: $orange;
 
 
 /* TYPOGRAPHY */
@@ -82,3 +87,4 @@ $body-bg: #fff;
 
 $text-primary: $gray;
 
+$max-width: 1280px;

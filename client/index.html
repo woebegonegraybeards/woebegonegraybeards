@@ -12,10 +12,13 @@
 </head>
 
 <body>
+<div class="container">
 
-  <h1>FeedFuse</h1>
+  <nav></nav>
 
-  <div ui-view>{{ greeting }}</div>
+  <div ui-view></div>
+
+</div>
 
 <!-- Dependency Files -->
 <script src="/bower_components/angular/angular.js"></script>
@@ -24,10 +27,12 @@
 
 <!-- App Files -->
 <script src="app.js"></script>
+<script src="js/directives/nav.js"></script>
 <script src="js/controllers/controllers.js"></script>
 <script src="js/controllers/MainController.js"></script>
 <script src="js/controllers/FeedController.js"></script>
 <script src="js/services/API.js"></script>
+<script src="js/services/Feed.js"></script>
 
 </body>
 </html>

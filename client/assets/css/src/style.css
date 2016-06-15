@@ -1,9 +1,27 @@
 @import '_variables';
-@import '_typography';
+/*@import '_typography';*/
 
 @reset-global mobile;
 
 body {
-  color: $blue;
-  font-family: Helvetica Neue;
+  /*@extend %typography;*/
+
+  background: $body-bg;
+  color: $text-primary;
+  font-family: $base-font-stack;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+  line-height: $base-line-height;
+  min-width: 320px;
+  z-index: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $max-width;
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+
+  @neat-outer-container;
 }
