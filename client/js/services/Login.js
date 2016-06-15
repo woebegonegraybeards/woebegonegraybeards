@@ -4,7 +4,7 @@ angular.module('ff.services', [])
   var session = function() {
     return $http({
       method: 'GET',
-      url: '/session'
+      url: '/'
     }).then(function(data) {
       return data;
     }, function(error) {

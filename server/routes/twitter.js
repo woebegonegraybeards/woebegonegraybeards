@@ -23,10 +23,9 @@ module.exports = function(app) {
       if (error) {
         console.log("Error getting OAuth request token : " + error);
       } else {
-        // req.session.oauth = {};                        // Creates oauth session object
-        req.session.oauth.twitter = {};                                     // Creates twitter session object
-        req.session.oauth.twitter.requestToken = requestToken;              // Stores token in session
-        req.session.oauth.twitter.requestTokenSecret = requestTokenSecret;  // Store tokenSecret in session
+        req.session.twitter = {};                                     // Creates twitter session object
+        req.session.twitter.requestToken = requestToken;              // Stores token in session
+        req.session.twitter.requestTokenSecret = requestTokenSecret;  // Store tokenSecret in session
         res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + requestToken);
       }
     });
@@ -34,17 +33,17 @@ module.exports = function(app) {
   
   // After you're authorized
   app.get('/auth/twitter/callback', function(req, res) {
-    req.session.oauth.twitter.oauth_verifier = req.query['oauth_verifier']; // Stores oauth_verifier in session
-    twitter.getAccessToken(req.session.oauth.twitter.requestToken,
-                           req.session.oauth.twitter.requestTokenSecret, 
-                           req.session.oauth.twitter.oauth_verifier, 
+    req.session.twitter.oauth_verifier = req.query['oauth_verifier']; // Stores oauth_verifier in session
+    twitter.getAccessToken(req.session.twitter.requestToken,
+                           req.session.twitter.requestTokenSecret, 
+                           req.session.twitter.oauth_verifier, 
                            function(error, accessToken, accessTokenSecret, results) {
       if (error) {
         console.log(error);
       } else {
-        req.session.oauth.twitter.accessToken = accessToken;              // Stores accessToken in session
-        req.session.oauth.twitter.accessTokenSecret = accessTokenSecret;  // Stores accessTokenSecret in session
-        // res.redirect('/');                                           // Redirects to '/login' with both access tokens      
+        req.session.twitter.accessToken = accessToken;              // Stores accessToken in session
+        req.session.twitter.accessTokenSecret = accessTokenSecret;  // Stores accessTokenSecret in session
+        res.redirect('/');                                           // Redirects to '/login' with both access tokens      
       }
     });
   });
@@ -58,11 +57,11 @@ module.exports = function(app) {
   
   // 10 recent tweets from homepage
   app.get('/api/twitter', function(req, res) {
-    if ( req.session.oauth.twitter.accessToken ){     // Checks if Twitter access token exists
+    if ( req.session.twitter.accessToken ){     // Checks if Twitter access token exists
       twitter.getTimeline('home',                                       // Makes home time line request
                           {count: 2},                                   // Number of Tweets requested
-                          req.session.oauth.twitter.accessToken,        // Passes session accessToken
-                          req.session.oauth.twitter.accessTokenSecret,  // Passes session accessTokenSecret
+                          req.session.twitter.accessToken,        // Passes session accessToken
+                          req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
                           function(err, data, response){
         console.log('data: ', data);
         res.json(data);                 // Sends data back to front-end
