@@ -1,4 +1,5 @@
 var ff = angular.module('feedfuse', [
+  'ff.directives',
   'ff.controllers',
   'ff.services',
   'ui.router',

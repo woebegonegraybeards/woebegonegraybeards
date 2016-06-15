@@ -12,17 +12,15 @@ var mixins = require('postcss-mixins');
 var neat = require('postcss-neat');
 var simpleVars = require('postcss-simple-vars');
 var reset = require('postcss-css-reset');
-var color = require('postcss-color-function');
 
 var processors = [
   postcssImport,
-  color,
-  reset,
   simpleVars,
+  reset,
+  autoprefixer({ browsers: ["last 2 version", "safari 5", "ie > 9", "opera 12.1", "ios 6", "android 2.3"] }),
   precss,
   neat,
   mixins,
-  autoprefixer({ browsers: ["last 2 version", "safari 5", "ie > 9", "opera 12.1", "ios 6", "android 2.3"] }),
   opacity
 ];
 
