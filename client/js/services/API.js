@@ -6,10 +6,8 @@ angular.module('ff.services', [])
       method: 'GET',
       url: '/api/twitter'
     }).then(function(data) {
-      // console.log(data);
       return data;
     }, function(error) {
-      // console.error(error);
       return error;
     })
   };

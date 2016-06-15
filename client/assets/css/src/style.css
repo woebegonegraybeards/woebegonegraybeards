@@ -1,0 +1,9 @@
+@import '_variables';
+@import '_typography';
+
+@reset-global mobile;
+
+body {
+  color: $blue;
+  font-family: Helvetica Neue;
+}
