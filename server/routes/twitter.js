@@ -44,7 +44,7 @@ module.exports = function(app) {
       } else {
         req.session.oauth.twitter.accessToken = accessToken;              // Stores accessToken in session
         req.session.oauth.twitter.accessTokenSecret = accessTokenSecret;  // Stores accessTokenSecret in session
-        // res.redirect('/');                                             // Redirects to '/login' with both access tokens      
+        // res.redirect('/');                                           // Redirects to '/login' with both access tokens      
       }
     });
   });

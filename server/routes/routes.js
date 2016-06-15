@@ -32,6 +32,7 @@ module.exports = function(app) {
     res.redirect('/login');
   });
   
+  
   // Front End Routes - handle all angular requests
   // app.get('*', function(req, res) {
   app.get('/login', function(req, res) {
