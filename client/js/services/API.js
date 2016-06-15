@@ -1,10 +1,10 @@
 angular.module('ff.services', [])
 
-.service('Twitter', function($q, $http) {
-  var getTimeline = function() {
+.service('API', function($q, $http) {
+  var getData = function() {
     return $http({
       method: 'GET',
-      url: '/api/twitter'
+      url: '/feed'
     }).then(function(data) {
       return data;
     }, function(error) {
@@ -13,6 +13,6 @@ angular.module('ff.services', [])
   };
 
   return {
-    getTimeline: getTimeline
+    getData: getData
   };
 });
