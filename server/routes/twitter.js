@@ -23,7 +23,7 @@ module.exports = function(app) {
       if (error) {
         console.log("Error getting OAuth request token : " + error);
       } else {
-        req.session.oauth = {};                                             // Creates oauth session object
+        // req.session.oauth = {};                        // Creates oauth session object
         req.session.oauth.twitter = {};                                     // Creates twitter session object
         req.session.oauth.twitter.requestToken = requestToken;              // Stores token in session
         req.session.oauth.twitter.requestTokenSecret = requestTokenSecret;  // Store tokenSecret in session
@@ -44,7 +44,7 @@ module.exports = function(app) {
       } else {
         req.session.oauth.twitter.accessToken = accessToken;              // Stores accessToken in session
         req.session.oauth.twitter.accessTokenSecret = accessTokenSecret;  // Stores accessTokenSecret in session
-        res.redirect('/');    // Redirects to '/' with both access tokens      
+        // res.redirect('/');                                           // Redirects to '/login' with both access tokens      
       }
     });
   });
