@@ -24,10 +24,12 @@
     "express-session": "^1.13.0",
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
+    "node-twitter-api": "^1.7.2",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-instagram": "^1.0.0",
-    "passport-twitter": "^1.0.4"
+    "passport-twitter": "^1.0.4",
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

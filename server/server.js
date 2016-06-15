@@ -9,31 +9,34 @@ var bodyParser      = require('body-parser');
 var morgan          = require('morgan');       // used for logging incoming request
 var methodOverride  = require('method-override');
 var Config          = require('./config/config');  // Contains API Keys
-var passport        = require('passport');
-var TwitterStrategy = require('passport-twitter').Strategy;
+var twitterAPI      = require('node-twitter-api');
+
+// var passport        = require('passport');
+// var TwitterStrategy = require('passport-twitter').Strategy;
+
 
 // Configure the Twitter strategy for use by Passport.
     // May need to move this to twitter.js route file
-passport.use(new TwitterStrategy({
-  consumerKey: Config.twitterConfig.key,
-  consumerSecret: Config.twitterConfig.secret,
-  callbackURL: "http://127.0.0.1:5000/auth/twitter/callback"
-},
-  function(token, tokenSecret, profile, cb) {
-    // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-    //   return cb(err, user);
-    // });
-    return cb(null, profile);
-  }
-));
+// passport.use(new TwitterStrategy({
+//   consumerKey: Config.twitterConfig.key,
+//   consumerSecret: Config.twitterConfig.secret,
+//   callbackURL: "http://127.0.0.1:5000/auth/twitter/callback"
+// },
+//   function(token, tokenSecret, profile, cb) {
+//     // User.findOrCreate({ twitterId: profile.id }, function (err, user) {
+//     //   return cb(err, user);
+//     // });
+//     return cb(null, profile);
+//   }
+// ));
 
 // Configure Passport authenticated session persistence.
-passport.serializeUser(function(user, cb) {
-  cb(null, user);
-});
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
-});
+// passport.serializeUser(function(user, cb) {
+//   cb(null, user);
+// });
+// passport.deserializeUser(function(obj, cb) {
+//   cb(null, obj);
+// });
 
 var port = process.env.PORT || 5000;
 
@@ -47,8 +50,8 @@ app.use(express.static('client'));     // Set the static file location to /clien
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 // Initialize Passport and restore auth state, if any, from the session
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Creates an instance of an express router
 var router            = express.Router();
@@ -63,7 +66,7 @@ app.use('/api/twitter', twitterRouter);
 app.use('/auth/instagram', instagramRouter);
 app.use('/api/instagram', instagramRouter);
 app.use('/auth/facebook', facebookRouter);
-app.use('/api/facebook', facebookRouter);
+app.use('/auth/facebook', facebookRouter);
 
 // Configures our routes
 require('./routes/routes.js')(app);
