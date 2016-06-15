@@ -67,6 +67,8 @@ module.exports = function(app) {
         console.log('data: ', data);
         res.json(data);                 // Sends data back to front-end
       });
+    } else {
+      // If not authenticated DO SOMETHING
     }
   });
   
