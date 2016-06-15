@@ -9,6 +9,12 @@ module.exports = function(app) {
     res.send(200, 'api response');
   });
   
+  // oauth test
+  app.get('/feed', function(req, res) {
+    console.log('/feed | req.session.oauth', req.session.oauth);
+    res.send(200, '/feed | whats up');
+  });
+  
   // Front End Routes - handle all angular requests
   // app.get('*', function(req, res) {
   app.get('/', function(req, res) {
