@@ -35,10 +35,10 @@ module.exports = function(app) {
         console.log(err.body);
         res.send("Didn't work");
       } else {
-        req.session.oauth = {};                                           // Creates session oauth object
+        // req.session.oauth = {};                        // Creates oauth session object
         req.session.oauth.instagram = {};                                 // Creates session instagram oauth object
         req.session.oauth.instagram.access_token = result.access_token;   // Stores access token in instagram session
-        res.redirect('/');                                                // Redirects to '/' with both access tokens
+        // res.redirect('/');                                           // Redirects to '/login' with both access tokens
       }
     });
     

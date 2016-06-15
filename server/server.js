@@ -22,13 +22,15 @@ app.use(express.static('client'));                                // Set the sta
 app.use(cookieParser());
 app.use(methodOverride('X-HTTP-Method-Override'));  // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 // app.use(express.static(__dirname + './client'));     // Set the static file location to /client
-app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+app.use(expressSession({ secret: 'meow', resave: true, saveUninitialized: true }));
 
 // Creates an instance of an express router
-var router            = express.Router();
-var twitterRouter     = express.Router();
-var instagramRouter   = express.Router();
-var facebookRouter    = express.Router();
+var router            = express.Router();      // Creates Router
+var twitterRouter     = express.Router();      // Creates Twitter Router
+var instagramRouter   = express.Router();      // Creates Instagram Router
+var facebookRouter    = express.Router();      // Creates Facebook Router
+
+
 
 // Prefixes all routes with /api
 app.use('/api', router);
