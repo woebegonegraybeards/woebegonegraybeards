@@ -57,14 +57,14 @@ module.exports = function(app) {
   // https://dev.twitter.com/rest/reference/get/statuses/home_timeline
   
   // 10 recent tweets from homepage
-  app.get('/api/twitter', function(req, res) {
+  app.post('/api/twitter', function(req, res) {
     
     // Parse our req.body for query
     var query = req.body.search;
     
     if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
       // twitter.getTimeline('home',                              // Makes home time line request
-      twitter.search( { q: "pizza", count: 2 },                   // 
+      twitter.search( { q: query, count: 2 },                   // 
                           // {count: 3},                                   // Number of Tweets requested
                           req.session.twitter.accessToken,        // Passes session accessToken
                           req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
