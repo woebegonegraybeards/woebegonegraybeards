@@ -49,10 +49,21 @@ module.exports = function(app) {
   app.get('/api/instagram', function(req, res) {
     console.log('api instagram');
     
-    // Check if req.session.oauth.instagram.access_token exists
+    // Check if req.session.instagram.access_token exists
+    if ( req.session.instagram.access_token ) {
       // If true, make API req
+      ig.user_self_feed({ count: 3 }, function(err, medias, pagination, remaining, limit) {
+        if ( err ){ 
+          console.error(err);
+        } 
+        console.log('medias: ', medias);
+        res.json(medias);
+      });
+    } else {
+      // DO SOMETHING
+    }
     
-    res.send(200, 'api instagram response');
+    // res.send(200, 'api instagram response');
   });
 
 };
