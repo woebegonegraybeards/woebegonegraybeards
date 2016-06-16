@@ -7,11 +7,11 @@ $green: #2ecc71;
 $orange: #FF3A00;
 $yellow: #edb211;
 $slate: #565a5c;
-$darkest-gray: color(#000 w(+20%));
-$darker-gray: color(#000 w(+40%));
+$darkest-gray: color(#000 w(+20%) s(0));
+$darker-gray: color(#000 w(+40%) s(0));
 $gray: #666;
-$lighter-gray: color(#fff w(-40%));
-$lightest-gray: color(#fff w(-20%));
+$lighter-gray: color(#fff w(-40%) s(0));
+$lightest-gray: color(#fff w(-20%) s(0));
 
 /* FONT WEIGHTS */
 $light-weight: 300;
@@ -44,28 +44,10 @@ $base-line-height: 1.5;
 $primary-color: $blue;
 
 /* TYPOGRAPHY */
-$header-color: #000;
-$header-font-family: $bebas-font-stack;
-$header-sizes: (
-  mobile: (
-    'h1': 32,
-    'h2': 26,
-    'h3': 24,
-    'h4': 22,
-    'h5': 20,
-    'h6': 16
-  ),
-  regular: (
-    'h1': 48,
-    'h2': 40,
-    'h3': 31,
-    'h4': 25,
-    'h5': 20,
-    'h6': 16
-  )
-) !default;
+$header-color: $darker-gray;
+$header-font-family: $helvetica-font-stack;
 $header-font-style: normal;
-$header-font-weight: $normal-weight;
+$header-font-weight: $semibold-weight;
 $header-line-height: 1.4;
 $header-margin-bottom: 0.5em;
 
