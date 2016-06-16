@@ -9,7 +9,7 @@ $yellow: #edb211;
 $slate: #565a5c;
 $darker-gray: color(#000 w(+20%) s(0));
 $dark-gray: color(#000 w(+40%) s(0));
-$gray: #666;
+$gray: #999;
 $light-gray: color(#fff w(-40%) s(0));
 $lighter-gray: color(#fff w(-20%) s(0));
 
@@ -60,10 +60,18 @@ $paragraph-max-width: auto;
 $small-font-size: 0.875;
 
 /* THEME */
-$max-width: 1280px;
+$max-width: 1040px;
 $body-bg: #fff;
 
-$nav-bg: $lighter-gray;
+$nav-bg: rgba(255, 255, 255, 0.90);
 
 $footer-bg: $slate;
 $footer-color: #fff;
+
+
+/* BRANDING */
+$twitter-blue: #55acee;
+$twitter-darker-gray: #292f33;
+$twitter-dark-gray: #66757f;
+$twitter-gray: #ccd6dd;
+$twitter-light-gray: #e1e8ed;

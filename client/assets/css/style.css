@@ -235,6 +235,7 @@ h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; line-height: 2; }
 /* BASE STYLES */
 /* TYPOGRAPHY */
 /* THEME */
+/* BRANDING */
 .em { font-style: italic; }
 strong { font-weight: 700; }
 h1, h2, h3, h4, h5, h6 {
@@ -324,6 +325,11 @@ ul, .ul {
 }
 body {
   background: #fff;
+  background-image: url('../img/lights-801894_960_720.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
   color: rgb(73, 73, 73);
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -334,32 +340,34 @@ body {
 }
 .container {
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 1040px;
   padding: 0 20px;
   position: relative;
   overflow: hidden;
 
-  max-width: 64em;
-
-  margin-left: auto;
-
-  margin-right: auto;
-
-  *zoom: 1;
+  /*grid-column: 12/12;*/
 }
-.container:before, .container:after { content: " "; display: table; }
-.container:after { clear: both; }
 footer {
   background: #565a5c;
   color: #fff;
 }
+.nav:after { content: ''; display: block; clear: both; }
 .nav {
-  background: rgb(230, 230, 230);
-  clear: fix;
+  background: rgba(255, 255, 255, 0.90);
+  -webkit-box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
 }
 .portal {
+  color: #999;
   float: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.portal:hover {
+  color: rgb(73, 73, 73);
 }
 .nav-link {
   float: right;
@@ -374,12 +382,16 @@ footer {
   border-radius: 20px;
   text-align: center;
 
-  box-sizing: border-box;
+  float: left;
 
   width: 100%;
+
+  margin-right: 2.08333%;
+
+  
 }
-@media mq('medium') { display: block; float: left; margin-right: 2.35765160%; width: 48.82117420%; margin-left: 25.58941290%;
- &:last-child { margin-right: 0; } }
+@media only screen and ( min-width: 35.5em ) {
+ .login { float: left; width: 48.95833%; margin-right: 2.08333%; margin-left: 25.52082%; margin-right: 25.52082%; } }
 .login-links {
   list-style-type: none;
 }
