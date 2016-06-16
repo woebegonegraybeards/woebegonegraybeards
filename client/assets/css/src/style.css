@@ -5,7 +5,7 @@
 
 body {
   background: $body-bg;
-  color: $blue;
+  color: $base-font-color;
   font-family: $base-font-stack;
   font-size: $base-font-size;
   font-weight: $base-font-weight;
@@ -23,4 +23,60 @@ body {
   overflow: hidden;
 
   @neat-outer-container;
+}
+
+footer {
+  background: $footer-bg;
+  color: $footer-color;
+}
+
+.nav {
+  background: $nav-bg;
+  clear: fix;
+  padding: 10px 0;
+}
+
+.portal {
+  float: left;
+}
+
+.nav-link {
+  float: right;
+}
+
+.content {
+  min-height: 480px;
+  margin: 40px auto;
+}
+
+.login {
+  background: $lighter-gray;
+  padding: 40px 20px;
+  border-radius: 20px;
+  text-align: center;
+
+  @neat-fill-parent;
+
+  @media mq('medium') {
+    @neat-span-columns 6;
+    @neat-shift 3;
+  }
+}
+
+.login-links {
+  list-style-type: none;
+}
+
+.btn {
+  background: transparent;
+  border: solid 1px transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  padding: 10px 20px;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  color: #fff;
 }

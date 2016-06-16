@@ -1,13 +1,6 @@
 .em { font-style: italic; }
 strong { font-weight: $bold-weight; }
 
-p {
-  color: $paragraph-color;
-  font-weight: $paragraph-font-weight;
-  line-height: $paragraph-line-height;
-  margin-bottom: $paragraph-margin-bottom;
-  max-width: $paragraph-max-width;
-}
 
 h1, h2, h3, h4, h5, h6 {
   color: $header-color;
@@ -71,18 +64,66 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-weight: $normal-weight;
 }
 
+h1 small {
+  font-size: resolve(map(headerSizes, mobile, h1)px * $small-font-size);
+
+  @media mq('medium') {
+    font-size: resolve(map(headerSizes, regular, h1)px * $small-font-size);
+  }
+}
+
+h2 small {
+  font-size: resolve(map(headerSizes, mobile, h2)px * $small-font-size);
+
+  @media mq('medium') {
+    font-size: resolve(map(headerSizes, regular, h2)px * $small-font-size);
+  }
+}
+
+h3 small {
+  font-size: resolve(map(headerSizes, mobile, h3)px * $small-font-size);
+
+  @media mq('medium') {
+    font-size: resolve(map(headerSizes, regular, h3)px * $small-font-size);
+  }
+}
+
+h4 small {
+  font-size: resolve(map(headerSizes, mobile, h4)px * $small-font-size);
+
+  @media mq('medium') {
+    font-size: resolve(map(headerSizes, regular, h4)px * $small-font-size);
+  }
+}
+
+h5 small {
+  font-size: resolve(map(headerSizes, mobile, h5)px * $small-font-size);
+
+  @media mq('medium') {
+    font-size: resolve(map(headerSizes, regular, h5)px * $small-font-size);
+  }
+}
+
+h6 small {
+  font-size: resolve(map(headerSizes, mobile, h6)px * $small-font-size);
+
+  @media mq('medium') {
+    font-size: resolve(map(headerSizes, regular, h6)px * $small-font-size);
+  }
+}
+
+p {
+  color: $paragraph-color;
+  font-weight: $paragraph-font-weight;
+  line-height: $paragraph-line-height;
+  margin-bottom: $paragraph-margin-bottom;
+  max-width: $paragraph-max-width;
+}
+
 .code {
   font-family: $mono;
 }
 
 ul, .ul {
   list-style-type: disc;
-}
-
-h2 small {
-  font-size: resolve(map(headerSizes, mobile, h2)px * 0.875);
-}
-
-h3 small {
-  font-size: resolve(map(headerSizes, mobile, h3)px * 0.875);
 }

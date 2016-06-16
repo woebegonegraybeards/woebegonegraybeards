@@ -12,11 +12,19 @@
 </head>
 
 <body>
-<div class="container">
+<div class="wrapper">
 
   <nav></nav>
 
-  <div ui-view></div>
+  <section class="content">
+    <div ui-view></div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Copyright Info</p>
+    </div>
+  </footer>
 
 </div>
 
@@ -34,7 +42,7 @@
 <!-- <script src="js/controllers/LoginController.js"></script> -->
 <script src="js/services/services.js"></script>
 <script src="js/services/API.js"></script>
-<!-- <script src="js/services/Feed.js"></script> -->
+<script src="js/services/Feed.js"></script>
 <!-- <script src="js/services/Login.js"></script> -->
 
 </body>
