@@ -65,50 +65,50 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 }
 
 h1 small {
-  font-size: resolve(map(headerSizes, mobile, h1)px * $small-font-size);
+  font-size: calc(map(headerSizes, mobile, h1)px * $small-font-size);
 
   @media mq('medium') {
-    font-size: resolve(map(headerSizes, regular, h1)px * $small-font-size);
+    font-size: calc(map(headerSizes, regular, h1)px * $small-font-size);
   }
 }
 
 h2 small {
-  font-size: resolve(map(headerSizes, mobile, h2)px * $small-font-size);
+  font-size: calc(map(headerSizes, mobile, h2)px * $small-font-size);
 
   @media mq('medium') {
-    font-size: resolve(map(headerSizes, regular, h2)px * $small-font-size);
+    font-size: calc(map(headerSizes, regular, h2)px * $small-font-size);
   }
 }
 
 h3 small {
-  font-size: resolve(map(headerSizes, mobile, h3)px * $small-font-size);
+  font-size: calc(map(headerSizes, mobile, h3)px * $small-font-size);
 
   @media mq('medium') {
-    font-size: resolve(map(headerSizes, regular, h3)px * $small-font-size);
+    font-size: calc(map(headerSizes, regular, h3)px * $small-font-size);
   }
 }
 
 h4 small {
-  font-size: resolve(map(headerSizes, mobile, h4)px * $small-font-size);
+  font-size: calc(map(headerSizes, mobile, h4)px * $small-font-size);
 
   @media mq('medium') {
-    font-size: resolve(map(headerSizes, regular, h4)px * $small-font-size);
+    font-size: calc(map(headerSizes, regular, h4)px * $small-font-size);
   }
 }
 
 h5 small {
-  font-size: resolve(map(headerSizes, mobile, h5)px * $small-font-size);
+  font-size: calc(map(headerSizes, mobile, h5)px * $small-font-size);
 
   @media mq('medium') {
-    font-size: resolve(map(headerSizes, regular, h5)px * $small-font-size);
+    font-size: calc(map(headerSizes, regular, h5)px * $small-font-size);
   }
 }
 
 h6 small {
-  font-size: resolve(map(headerSizes, mobile, h6)px * $small-font-size);
+  font-size: calc(map(headerSizes, mobile, h6)px * $small-font-size);
 
   @media mq('medium') {
-    font-size: resolve(map(headerSizes, regular, h6)px * $small-font-size);
+    font-size: calc(map(headerSizes, regular, h6)px * $small-font-size);
   }
 }
 

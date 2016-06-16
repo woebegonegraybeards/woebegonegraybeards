@@ -5,6 +5,10 @@
 
 body {
   background: $body-bg;
+  background-image: url('../img/lights-801894_960_720.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: $base-font-color;
   font-family: $base-font-stack;
   font-size: $base-font-size;
@@ -22,7 +26,7 @@ body {
   position: relative;
   overflow: hidden;
 
-  @neat-outer-container;
+  /*grid-column: 12/12;*/
 }
 
 footer {
@@ -32,12 +36,21 @@ footer {
 
 .nav {
   background: $nav-bg;
+  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
   clear: fix;
   padding: 10px 0;
 }
 
 .portal {
+  color: $gray;
   float: left;
+  font-weight: $bold-weight;
+  text-transform: uppercase;
+  transition: all 0.3s ease-out;
+}
+
+.portal:hover {
+  color: $dark-gray;
 }
 
 .nav-link {
@@ -55,12 +68,15 @@ footer {
   border-radius: 20px;
   text-align: center;
 
-  @neat-fill-parent;
+  grid-column: 12/12;
 
-  @media mq('medium') {
-    @neat-span-columns 6;
-    @neat-shift 3;
+  @media mq('small') {
+    grid-column: 6/12;
+    grid-push: 3/12;
+    grid-pull: 3/12;
   }
+
+  
 }
 
 .login-links {

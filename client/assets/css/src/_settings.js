@@ -8,6 +8,7 @@ module.exports = {
     'large': '64em', // >= 1024px @ 16px 
     'xlarge': '80em' // >= 1280px @ 16px
   },
+  
   map: {
     maps: [{
       headerSizes: {
@@ -29,5 +30,11 @@ module.exports = {
         }
       }
     }]
+  },
+
+  grid: {
+    columns: 12,
+    maxWidth: 1040,
+    gutter: 20
   }
 }
