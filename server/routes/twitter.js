@@ -39,7 +39,8 @@ module.exports = function(app) {
                            req.session.twitter.oauth_verifier, 
                            function(error, accessToken, accessTokenSecret, results) {
       if (error) {
-        console.log(error);
+        console.log('ERROR: Twitter Callback');
+        console.log(' >>>>>>>>>', error.body);
       } else {
         req.session.twitter.accessToken = accessToken;              // Stores accessToken in session
         req.session.twitter.accessTokenSecret = accessTokenSecret;  // Stores accessTokenSecret in session
@@ -57,17 +58,25 @@ module.exports = function(app) {
   
   // 10 recent tweets from homepage
   app.get('/api/twitter', function(req, res) {
-    if ( req.session.twitter.accessToken ){     // Checks if Twitter access token exists
-      twitter.getTimeline('home',                                       // Makes home time line request
-                          {count: 3},                                   // Number of Tweets requested
+    
+    // Parse our req.body for query
+    var query = req.body.search;
+    
+    if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
+      // twitter.getTimeline('home',                              // Makes home time line request
+      twitter.search( { q: "pizza", count: 2 },                   // 
+                          // {count: 3},                                   // Number of Tweets requested
                           req.session.twitter.accessToken,        // Passes session accessToken
                           req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
                           function(err, data, response){
-        console.log('data: ', data);
+        console.log('API: Twitter -----------------------------' );
+        console.log('>>>>>>>>>>>>>> Twitter Data: ', data);
         res.json(data);                 // Sends data back to front-end
       });
     } else {
       // If not authenticated DO SOMETHING
+      res.json({'Error': "Sorry you're not authorized for Twitter"});
+      // res.send(404, "Sorry you're not authorized for Twitter");
     }
   });
   

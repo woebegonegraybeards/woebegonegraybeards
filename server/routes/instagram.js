@@ -7,8 +7,7 @@ var Config          = require('../config/config');            // Contains API Ke
 var ig              = require('instagram-node').instagram();  // Requires ig package
 
 // https://www.npmjs.com/package/instagram-node
-
-// ig.use({ access_token: 'YOUR_ACCESS_TOKEN' });
+// ig.use({ access_token: aToken });
 ig.use({                                         // Sets our ig id and secret
   client_id: Config.instagramConfig.id,
   client_secret: Config.instagramConfig.secret 
@@ -32,11 +31,13 @@ module.exports = function(app) {
                       ig_redirect_uri,          // Passes our redirect uri
                       function(err, result) {
       if (err) {                                // Checks for error
-        console.log(err.body);
+        console.log('ERROR: Instagram Callback');
+        console.log(' >>>>>>>>>', err.body);
         res.send("Didn't work");
       } else {
         req.session.instagram = {};                                 // Creates session instagram oauth object
         req.session.instagram.access_token = result.access_token;   // Stores access token in instagram session
+        // ig.use({ access_token: result.access_token });
         res.redirect('/');                                           // Redirects to '/login' with both access tokens
       }
     });
@@ -47,20 +48,35 @@ module.exports = function(app) {
 
   // 
   app.get('/api/instagram', function(req, res) {
-    console.log('api instagram');
+    
+    ig.use({                                         // Sets our ig id and secret
+      client_id: Config.instagramConfig.id,
+      client_secret: Config.instagramConfig.secret 
+    });
     
     // Check if req.session.instagram.access_token exists
-    if ( req.session.instagram.access_token ) {
+    if ( req.session.instagram.access_token !== undefined ) {
+      console.log('WE HAVE INSTAGRAM ACCESS TOKENS');
+      ig.use({ access_token: req.session.instagram.access_token });
       // If true, make API req
-      ig.user_self_feed({ count: 3 }, function(err, medias, pagination, remaining, limit) {
+      // ig.user('tsaopow', function(err, result, remaining, limit) {
+      // ig.user_search('caretv', { count: 1 }, function(err, users, remaining, limit) {
+      // ig.user_self_feed( function(err, medias, pagination, remaining, limit) {
+      // ig.user_self_media_recent( function(err, medias, pagination, remaining, limit) {
+      ig.tag_search('pizza', function(err, result, remaining, limit) {
         if ( err ){ 
-          console.error(err);
+          console.log('ERROR: Instagram API');
+          console.log(' >>>>>>>>>', err);
+          return;
         } 
-        console.log('medias: ', medias);
-        res.json(medias);
+        console.log('API: Instagram ---------------------------');
+        console.log('>>>>>>>>>>>>>> Instagram Medias: ', result);
+        res.json(result);
       });
     } else {
       // DO SOMETHING
+      res.json({'Error': "Sorry you're not authorized for Instagram"});
+      // res.send(404, "Sorry you're not authorized for Instagram");
     }
     
     // res.send(200, 'api instagram response');
