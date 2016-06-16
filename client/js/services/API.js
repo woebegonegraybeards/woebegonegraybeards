@@ -19,9 +19,9 @@ angular.module('ff.services').service('Twitter', function($q, $http) {
 angular.module('ff.services').service('Instagram', function($q, $http) {
   var getData = function(query) {
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/instagram/',
-      // data: JSON.stringify({search: query})
+      data: JSON.stringify({search: query})
     }).then(function(data) {
       return data;
     }, function(error) {
