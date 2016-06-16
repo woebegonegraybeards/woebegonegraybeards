@@ -3,6 +3,7 @@
 
 var express         = require('express');
 var expressSession  = require('express-session');
+var request         = require('request');
 var Config          = require('../config/config');            // Contains API Keys
 var ig              = require('instagram-node').instagram();  // Requires ig package
 
@@ -45,10 +46,24 @@ module.exports = function(app) {
   });
   
   // Instagram API calls -------------------------------------------------------
+  
+  // app.get('/api/instagram')
+  // https://api.instagram.com/v1/tags/{tag-name}?access_token=ACCESS-TOKEN
+  
+  // YOU HAVE TO DO THIS BEFORE ANYTHING TO AUTH INSTAGRAM PUBLIC CONTENT REQUESTS
+  // https://www.instagram.com/oauth/authorize/?client_id=d4767b89c3f4466cbaafab1abed7d151&redirect_uri=http://127.0.0.1:5000/auth/instagram/callback&response_type=code&scope=public_content
 
   // 
-  app.get('/api/instagram', function(req, res) {
+  app.post('/api/instagram', function(req, res) {
+    var query = req.body.search;
+    request('https://api.instagram.com/v1/tags/' + query + '/media/recent?access_token=' + req.session.instagram.access_token, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log('WORK!!!', JSON.parse(body));
+        res.json(body)
+      }
+    });
     
+    /*
     ig.use({                                         // Sets our ig id and secret
       client_id: Config.instagramConfig.id,
       client_secret: Config.instagramConfig.secret 
@@ -60,10 +75,10 @@ module.exports = function(app) {
       ig.use({ access_token: req.session.instagram.access_token });
       // If true, make API req
       // ig.user('tsaopow', function(err, result, remaining, limit) {
-      // ig.user_search('caretv', { count: 1 }, function(err, users, remaining, limit) {
+      ig.user_search('pizza', { count: 10 }, function(err, users, remaining, limit) {
       // ig.user_self_feed( function(err, medias, pagination, remaining, limit) {
       // ig.user_self_media_recent( function(err, medias, pagination, remaining, limit) {
-      ig.tag_search('pizza', function(err, result, remaining, limit) {
+      // ig.tag_search('pizza', function(err, result, remaining, limit) {
         if ( err ){ 
           console.log('ERROR: Instagram API');
           console.log(' >>>>>>>>>', err);
@@ -78,7 +93,7 @@ module.exports = function(app) {
       res.json({'Error': "Sorry you're not authorized for Instagram"});
       // res.send(404, "Sorry you're not authorized for Instagram");
     }
-    
+    */
     // res.send(200, 'api instagram response');
   });
 
