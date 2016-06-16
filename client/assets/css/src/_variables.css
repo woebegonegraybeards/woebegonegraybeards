@@ -7,11 +7,11 @@ $green: #2ecc71;
 $orange: #FF3A00;
 $yellow: #edb211;
 $slate: #565a5c;
-$darkest-gray: color(#000 w(+20%) s(0));
-$darker-gray: color(#000 w(+40%) s(0));
+$darker-gray: color(#000 w(+20%) s(0));
+$dark-gray: color(#000 w(+40%) s(0));
 $gray: #666;
-$lighter-gray: color(#fff w(-40%) s(0));
-$lightest-gray: color(#fff w(-20%) s(0));
+$light-gray: color(#fff w(-40%) s(0));
+$lighter-gray: color(#fff w(-20%) s(0));
 
 /* FONT WEIGHTS */
 $light-weight: 300;
@@ -35,7 +35,7 @@ $mono: $consolas-font-stack;
 
 
 /* BASE STYLES */
-$base-font-color: $darker-gray;
+$base-font-color: $dark-gray;
 $base-font-size: 16px;
 $base-font-stack: $helvetica-font-stack;
 $base-font-weight: $normal-weight;
@@ -60,8 +60,10 @@ $paragraph-max-width: auto;
 $small-font-size: 0.875;
 
 /* THEME */
+$max-width: 1280px;
 $body-bg: #fff;
 
-$text-primary: $gray;
+$nav-bg: $lighter-gray;
 
-$max-width: 1280px;
+$footer-bg: $slate;
+$footer-color: #fff;

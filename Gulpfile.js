@@ -18,6 +18,7 @@ var simpleMediaQueries = require('postcss-simple-media-queries');
 var nested = require('postcss-nested');
 var map = require('postcss-map');
 var math = require('postcss-math');
+var clearfix = require('postcss-clearfix');
 
 var settings = require('./client/assets/css/src/_settings');
 
@@ -31,6 +32,7 @@ var processors = [
   opacity,
   color,
   autoprefixer({ browsers: ["last 2 version", "safari 5", "ie > 9", "opera 12.1", "ios 6", "android 2.3"] }),
+  clearfix,
   precss,
   neat,
   mixins,

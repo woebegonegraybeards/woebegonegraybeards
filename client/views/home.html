@@ -1,10 +1,18 @@
-<h2>One feed. No fluff. <small>test small</small></h2>
+<div class="container">
 
 <div class="login">
-<h4>Log In</h4>
-<a href="auth/twitter" class="btn btn-twitter">Twitter</a><br>
-<a href="auth/instagram" class="btn btn-instagram">Instagram</a><br>
-<a ui-sref="feed" class="btn btn-primary">Fuse Feeds</a><br>
-<!-- <a href='/feed'>Test API calls</a><br>
-<a href='/printSession'>Print Session</a> -->
+  <h4>Authorize</h4>
+  
+  <a href="auth/twitter" class="btn btn-twitter">Twitter</a>
+  <a href="auth/instagram" class="btn btn-instagram">Instagram</a>
+  <form name="search">
+    <label for="query">Search for a topic:</label>
+    <input type="text" id="query" ng-model="query">
+    <button type="submit" ui-sref="feed" ng-click="processSearch(query)" class="btn btn-primary">Fuse Feeds</button>
+  </form>
+  <!-- <a href='/feed'>Test API calls</a><br>
+  <a href='/printSession'>Print Session</a> -->
+  {{ query }}
+</div>
+
 </div>
