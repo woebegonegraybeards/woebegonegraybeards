@@ -56,20 +56,20 @@ module.exports = function(app) {
   // https://dev.twitter.com/rest/reference/get/statuses/home_timeline
   
   // 10 recent tweets from homepage
-  app.get('/api/twitter', function(req, res) {
-    if ( req.session.twitter.accessToken ){     // Checks if Twitter access token exists
-      twitter.getTimeline('home',                                       // Makes home time line request
-                          {count: 2},                                   // Number of Tweets requested
-                          req.session.twitter.accessToken,        // Passes session accessToken
-                          req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
-                          function(err, data, response){
-        console.log('data: ', data);
-        res.json(data);                 // Sends data back to front-end
-      });
-    } else {
-      // If not authenticated DO SOMETHING
-    }
-  });
+  // app.get('/api/twitter', function(req, res) {
+  //   if ( req.session.twitter.accessToken ){     // Checks if Twitter access token exists
+  //     twitter.getTimeline('home',                                       // Makes home time line request
+  //                         {count: 2},                                   // Number of Tweets requested
+  //                         req.session.twitter.accessToken,        // Passes session accessToken
+  //                         req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
+  //                         function(err, data, response){
+  //       console.log('data: ', data);
+  //       res.json(data);                 // Sends data back to front-end
+  //     });
+  //   } else {
+  //     // If not authenticated DO SOMETHING
+  //   }
+  // });
   
   // Top Posts
   app.get('/api/twitter/top', function(req, res) {
