@@ -15,7 +15,7 @@ ff.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $url
       url: '/',
       // abstract: true,
       templateUrl: 'views/home.html',
-      controller: 'LoginController'
+      controller: 'MainController'
     })
     .state('feed', {
       url: '/feed',
