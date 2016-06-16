@@ -33,7 +33,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
       });
 
       Instagram.getData($scope.query).then(function(results) {
-        $scope.instagram = results.data;
+        $scope.instagramData = results.data;
       }, function(error) {
         console.error(error);
       });
