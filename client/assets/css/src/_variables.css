@@ -65,7 +65,7 @@ $body-bg: #fff;
 
 $nav-bg: rgba(255, 255, 255, 0.90);
 
-$footer-bg: $slate;
+$footer-bg: rgba(0, 0, 0, 0.3);
 $footer-color: #fff;
 
 
@@ -75,3 +75,5 @@ $twitter-darker-gray: #292f33;
 $twitter-dark-gray: #66757f;
 $twitter-gray: #ccd6dd;
 $twitter-light-gray: #e1e8ed;
+
+$instagram-pink: #e1306c;

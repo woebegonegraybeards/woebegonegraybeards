@@ -32,25 +32,28 @@ body {
 footer {
   background: $footer-bg;
   color: $footer-color;
+  padding: 20px 0;
+  text-align: center;
 }
 
 .nav {
-  background: $nav-bg;
-  box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 80%);
   clear: fix;
+  color: $lighter-gray;
   padding: 10px 0;
 }
 
 .portal {
-  color: $gray;
+  color: #fff;
   float: left;
   font-weight: $bold-weight;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   transition: all 0.3s ease-out;
 }
 
 .portal:hover {
-  color: $dark-gray;
+  color: $lighter-gray;
 }
 
 .nav-link {
@@ -59,12 +62,22 @@ footer {
 
 .content {
   min-height: 480px;
-  margin: 40px auto;
+  margin: 0 auto;
+}
+
+.tagline {
+  text-align: center;
+}
+
+.tagline h1 {
+  color: #fff;
+  font-weight: $bold-weight;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .login {
-  background: $lighter-gray;
-  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
   border-radius: 20px;
   text-align: center;
 
@@ -75,12 +88,14 @@ footer {
     grid-push: 3/12;
     grid-pull: 3/12;
   }
-
-  
 }
 
 .login-links {
   list-style-type: none;
+}
+
+.feed {
+  background: #fff;
 }
 
 .btn {
@@ -89,10 +104,41 @@ footer {
   border-radius: 10px;
   cursor: pointer;
   display: block;
+  margin: 0 auto 20px;
   padding: 10px 20px;
+  transition: all 0.3s ease-out;
 }
 
 .btn-primary {
-  background-color: $primary-color;
+  background-color: transparent;
+  border-color: $gray;
+  color: $gray;
+}
+
+.btn-primary:hover {
+  background-color: $gray;
   color: #fff;
+}
+
+.btn-twitter {
+  background: $twitter-blue;
+  color: #fff;
+}
+
+.btn-twitter:hover {
+  background: color($twitter-blue w(-10%) s(-5%));
+}
+
+.btn-instagram {
+  background: $instagram-pink;
+  color: #fff;
+}
+
+input[type='text'] {
+  border: solid 1px $light-gray;
+  border-radius: 5px;
+  font: inherit;
+  margin: 10px auto;
+  padding: 5px;
+  width: 100%;
 }
