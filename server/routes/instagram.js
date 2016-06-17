@@ -58,7 +58,7 @@ module.exports = function(app) {
     var query = req.body.search;
     request('https://api.instagram.com/v1/tags/' + query + '/media/recent?access_token=' + req.session.instagram.access_token + '&count=3', function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log('WORK!!!', JSON.parse(body));
+        console.log('Instagram WORK!!!', JSON.parse(body));
         res.json(JSON.parse(body));
       }
     });
