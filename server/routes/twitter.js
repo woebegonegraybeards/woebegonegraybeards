@@ -70,70 +70,19 @@ module.exports = function(app) {
                           function(err, data, response){
         console.log('API: Twitter -----------------------------' );
         console.log('>>>>>>>>>>>>>> Twitter Data: ', data.statuses);
-        // return data.statues;
-        
-        
-        /*
-        // Store all embeded tweets with timestamps
-        var tweetPackage = [];
-        
-        
-        // Iterate over all results and pass each url into embed API call
-        data.statuses.forEach(function(val){
-          
-          console.log('INSIDE THEN data.statuses ===== : ', val);
-          
-          var thisTweet = {};
-          
-          // Convert and store the timestamp
-          thisTweet.time = val.created_at;
-          console.log('data.statuses.forEach TIME: ', time);
-          
-          // Parse out the tweet id to pass through the request
-          var id = val.id;
-          console.log('data.statuses.forEach ID: ', id);
-          
-          // https://publish.twitter.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F507185938620219395
-          
-          // Request embeded Twitter statements
-          request('https://publish.twitter.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F' + id, function (error, response, body) {
-            if ( error ){
-              console.log('ERROR = ombed : ', error);
-            }
-            
-            if (!error && response.statusCode == 200) {
-              console.log('Oembed HTML????', JSON.parse(body));
-              // res.json(JSON.parse(body.html));
-              
-              thisTweet.html = body.html;
-            }
-          }); 
-          
-          
-          tweetPackage.push(thisTweet);
-        });
-        
-        console.log('tweetPackage: ', tweetPackage);
-        
-        */
-        
+
         res.json(data.statuses);                 // Sends data back to front-end
-        // res.json(tweetPackage);
-        
-        // Send final tweetPackge to front end to be sorted and placed on DOM in FeedController
-        
-        // return data.statuses;
-        
-        
+    
       });
       
-    
     } else {
       // If not authenticated DO SOMETHING
       res.json({'Error': "Sorry you're not authorized for Twitter"});
       // res.send(404, "Sorry you're not authorized for Twitter");
     }
   });
+  
+  /* BACKLOG -----------
   
   // Top Posts
   app.get('/api/twitter/top', function(req, res) {
@@ -147,5 +96,7 @@ module.exports = function(app) {
     res.send(200, '/api/twitter route works yee')
   });
   
+    BACKLOG -----------
+  */
   
 };
