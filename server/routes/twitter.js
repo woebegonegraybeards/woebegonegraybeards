@@ -64,13 +64,13 @@ module.exports = function(app) {
     
     if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
       // twitter.getTimeline('home',                              // Makes home time line request
-      twitter.search( { q: query, count: 10 },                    // Number of Tweets requested
+      twitter.search( { q: query, count: 3 },                    // Number of Tweets requested
                           req.session.twitter.accessToken,        // Passes session accessToken
                           req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
                           function(err, data, response){
         console.log('API: Twitter -----------------------------' );
-        console.log('>>>>>>>>>>>>>> Twitter Data: ', data);
-        res.json(data);                 // Sends data back to front-end
+        console.log('>>>>>>>>>>>>>> Twitter Data: ', data.statuses);
+        res.json(data.statuses);                 // Sends data back to front-end
       });
     } else {
       // If not authenticated DO SOMETHING
