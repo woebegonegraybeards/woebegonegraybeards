@@ -348,37 +348,49 @@ body {
   /*grid-column: 12/12;*/
 }
 footer {
-  background: #565a5c;
+  background: rgba(0, 0, 0, 0.3);
   color: #fff;
+  padding: 20px 0;
+  text-align: center;
 }
 .nav:after { content: ''; display: block; clear: both; }
 .nav {
-  background: rgba(255, 255, 255, 0.90);
-  -webkit-box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
-          box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.1);
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), color-stop(80%, transparent));
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3), transparent 80%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), transparent 80%);
+  color: rgb(230, 230, 230);
   padding: 10px 0;
 }
 .portal {
-  color: #999;
+  color: #fff;
   float: left;
   font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 .portal:hover {
-  color: rgb(73, 73, 73);
+  color: rgb(230, 230, 230);
 }
 .nav-link {
   float: right;
 }
 .content {
   min-height: 480px;
-  margin: 40px auto;
+  margin: 0 auto;
+}
+.tagline {
+  text-align: center;
+}
+.tagline h1 {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 .login {
-  background: rgb(230, 230, 230);
-  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
   border-radius: 20px;
   text-align: center;
 
@@ -386,14 +398,15 @@ footer {
 
   width: 100%;
 
-  margin-right: 2.08333%;
-
-  
+  margin-right: 1.92308%;
 }
 @media only screen and ( min-width: 35.5em ) {
- .login { float: left; width: 48.95833%; margin-right: 2.08333%; margin-left: 25.52082%; margin-right: 25.52082%; } }
+ .login { float: left; width: 49.03846%; margin-right: 1.92308%; margin-left: 25.48077%; margin-right: 25.48077%; } }
 .login-links {
   list-style-type: none;
+}
+.feed {
+  background: #fff;
 }
 .btn {
   background: transparent;
@@ -401,9 +414,36 @@ footer {
   border-radius: 10px;
   cursor: pointer;
   display: block;
+  margin: 0 auto 20px;
   padding: 10px 20px;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 .btn-primary {
-  background-color: #6495ed;
+  background-color: transparent;
+  border-color: #999;
+  color: #999;
+}
+.btn-primary:hover {
+  background-color: #999;
   color: #fff;
+}
+.btn-twitter {
+  background: #55acee;
+  color: #fff;
+}
+.btn-twitter:hover {
+  background: rgb(64, 159, 231);
+}
+.btn-instagram {
+  background: #e1306c;
+  color: #fff;
+}
+input[type='text'] {
+  border: solid 1px rgb(204, 204, 204);
+  border-radius: 5px;
+  font: inherit;
+  margin: 10px auto;
+  padding: 5px;
+  width: 100%;
 }
