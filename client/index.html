@@ -35,6 +35,22 @@
 <script src="/bower_components/underscore/underscore.js"></script>
 
 <!-- App Files -->
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+ 
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+ 
+  return t;
+}(document, "script", "twitter-wjs"));</script>
 <script src="app.js"></script>
 <script src="js/directives/nav.js"></script>
 <script src="js/controllers/controllers.js"></script>
@@ -45,6 +61,9 @@
 <script src="js/services/API.js"></script>
 <script src="js/services/Feed.js"></script>
 <!-- <script src="js/services/Login.js"></script> -->
+
+<!-- <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+<script async defer src="http://platform.instagram.com/en_US/embeds.js"></script>
 
 </body>
 </html>
