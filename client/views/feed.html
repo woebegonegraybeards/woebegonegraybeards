@@ -1,11 +1,17 @@
 <section class="feed">
 
 <div class="container">
-  <h1>Twitter Data</h1>
-  {{ twitterData }}
-
-  <h1>Instagram Data</h1>
-  {{ instagramData }}
+  <div ng-repeat="post in sorted">
+    <blockquote ng-class="{ 'twitter-tweet': (post.source_network=='twitter'), 'instagram-media': (post.source_network=='instagram') }">
+    
+    <!-- TWITTER -->
+    <p ng-if="post.source_network=='twitter'">{{ post.text }}</p>
+    <a ng-if="post.source_network=='twitter'" ng-href="http://twitter.com/{{post.user.screen_name}}/status/{{post.id}}">{{ post.created_at | date: 'MMMM d, yyyy' }}</a>
+    </blockquote>
+  </div>
+  <blockquote class="twitter-tweet">
+<p>Happy 50th anniversary to the Wilderness Act! Here's a great wilderness photo from <a href="https://twitter.com/YosemiteNPS">@YosemiteNPS</a>. <a href="https://twitter.com/hashtag/Wilderness50?src=hash">#Wilderness50</a> <a href="http://t.co/HMhbyTg18X">pic.twitter.com/HMhbyTg18X</a></p>— US Dept of Interior (@Interior) <a href="https://twitter.com/Interior/status/507185938620219395">September 3, 2014</a>
+</blockquote>
 </div>
 
 </section>

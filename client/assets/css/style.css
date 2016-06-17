@@ -325,6 +325,7 @@ ul, .ul {
 }
 body {
   background: #fff;
+  background-attachment: fixed;
   background-image: url('../img/lights-801894_960_720.jpg');
   background-position: top center;
   background-repeat: no-repeat;
@@ -446,6 +447,19 @@ input[type='text'] {
   margin: 10px auto;
   padding: 5px;
   width: 100%;
+}
+.instagram-media {
+  background:#FFF;
+  border:0;
+  border-radius:3px;
+  -webkit-box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+          box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+  margin: 1px;
+  max-width:658px;
+  padding:0;
+  width:99.375%;
+  width:-webkit-calc(100% - 2px);
+  width:calc(100% - 2px);
 }
 .green-check {
   margin: 0px 0 -6px 5px;
