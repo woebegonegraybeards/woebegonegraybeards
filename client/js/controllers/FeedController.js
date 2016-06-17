@@ -58,10 +58,10 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     }
   }, true);
   
-  // Sort function organizes 
+  // Sort function organizes the API responses from Twitter and Instagram into one final sorted array
   $scope.sort = function( twitter, instagram ) {
     
-    var epochConverter = function(str){
+    var epochConverter = function(str){   // Designed to convert twitters original user.created_at string into epoch time
       var fullDate = str,
           day = str.substring(8,10),
           mon = str.substring(4,7),
@@ -75,39 +75,37 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
       return Date.UTC(year, mnths[mon], day, hour, min, sec);
     };
     
-    // 1466097346
     instagram.forEach(function(val){    // Converts Instagram created_time to uniform dat with Twitter
       var time = val.created_time;
+      val.source_network = 'instagram';
       val.created_at = parseInt(time);
     });
-    
-    // 1468712716000
+
     twitter.forEach(function(val){      // Converts Twitter created_at to epoch time to match Instagram
-      var time = val.created_at;
-      val.created_at = epochConverter(time);
+      var time = val.user.created_at;
+      val.source_network = 'twitter';                         // Adds a source_network property
+      val.created_at = epochConverter(time);                  // Converts created_at string to an epoch time integer
+      var time2 = val.created_at.toString().substring(0,10);  // Makes the epoch time 10 digits like Instagram
+      val.created_at = parseInt(time2);                       // Turns epoch time to a string again after last line
     });
     
-    $scope.unsorted = [];   // Creates unsorted array
+    $scope.unsorted = [];             // Creates unsorted array
     
     instagram.forEach(function(val){
-      $scope.unsorted.push(val);      // Pushes 
+      $scope.unsorted.push(val);      // Pushes each post into the unsorted array
     });
     
     twitter.forEach(function(val){
-      $scope.unsorted.push(val);
+      $scope.unsorted.push(val);      // Pushes each tweet into the unsorted array
     });
     
-    console.log('unsorted: ', $scope.unsorted);
-    
-    $scope.unsorted.sort(function(val){
-      return val.created_at;
+    $scope.sorted = _.sortBy($scope.unsorted, function(val){    // Creates a sorted array out of unsorted array
+      return val.created_at;                                    // This new array is sorted by created_at property
     });
     
-    console.log('unsorted after sort: ', $scope.unsorted);
-    
-    console.log('has twitter data? ', twitter );
-    console.log('has instagram data?: ', instagram);
+    console.log('after sort: ', $scope.sorted);
   };
+  
 });
 
 
