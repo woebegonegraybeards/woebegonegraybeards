@@ -88,6 +88,15 @@ footer {
   }
 }
 
+[ui-view].ng-enter {
+  transition: all 0.5s ease-out;
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
 .login-links {
   list-style-type: none;
 }
