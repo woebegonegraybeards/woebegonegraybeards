@@ -6,12 +6,13 @@
 
 <div class="container">
   <div class="feed-post" ng-repeat="post in sorted">
-    <blockquote ng-if="post.source_network=='twitter'" class="twitter-tweet">
-    
-    <!-- TWITTER -->
-    <p>{{ post.text }}<a></a><a></a></p>— {{ post.user.name }} (<a ng-href="http://twitter.com/{{post.user.screen_name}}">@{{ post.user.screen_name }}</a>)
-    <a>{{ post.created_at * 1000 | date: 'MMMM d, yyyy' }}</a>
-    </blockquote>
+    <div ng-if="post.source_network=='twitter'" >
+        <blockquote twitter post="post" class="twitter-tweet"></blockquote>
+        <!-- TWITTER -->
+        <!-- <p>{{ post.text }}<a></a><a></a></p>— {{ post.user.name }} (<a ng-href="http://twitter.com/{{post.user.screen_name}}">@{{ post.user.screen_name }}</a>)
+        <a>{{ post.created_at * 1000 | date: 'MMMM d, yyyy' }}</a> -->
+    </div>
+
     <blockquote ng-if="post.source_network=='instagram'" class="instagram-media">
     
     <!-- INSTAGRAM -->
