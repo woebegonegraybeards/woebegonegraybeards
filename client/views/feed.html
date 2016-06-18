@@ -1,17 +1,31 @@
 <section class="feed">
 
 <div class="container">
-  <div ng-repeat="post in sorted">
-    <blockquote ng-class="{ 'twitter-tweet': (post.source_network=='twitter'), 'instagram-media': (post.source_network=='instagram') }">
+  <div class="feed-post" ng-repeat="post in sorted">
+    <blockquote ng-if="post.source_network=='twitter'" class="twitter-tweet">
     
     <!-- TWITTER -->
-    <p ng-if="post.source_network=='twitter'">{{ post.text }}</p>
-    <a ng-if="post.source_network=='twitter'" ng-href="http://twitter.com/{{post.user.screen_name}}/status/{{post.id}}">{{ post.created_at | date: 'MMMM d, yyyy' }}</a>
+    <p>{{ post.text }}<a></a><a></a></p>— {{ post.user.name }} (@{{ post.user.screen_name }})
+    <a>{{ post.created_at * 1000 | date: 'MMMM d, yyyy' }}</a>
     </blockquote>
+    <blockquote ng-if="post.source_network=='instagram'" class="instagram-media">
+    
+    <!-- INSTAGRAM -->
+    <div style="padding:8px;">
+        <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;">
+            <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div>
+            </div>
+        <p style=" margin:8px 0 0 0; padding:0 4px;"> <a ng-href="{{ post.link }}" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">{{ post.caption.text }}</a></p>
+        <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by {{  post.full_name }} (@{{  post.user.username }}) on
+            <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;">{{ post.created_at * 1000 | date: "MMM d, yyyy 'at' h:mma"}}</time>
+        </p>
+    </div>
+    </blockquote>
+    <script>
+      
+      // twttr.widgets.load(document.getElementsByClassName('feed'[0]));
+    </script>
   </div>
-  <blockquote class="twitter-tweet">
-<p>Happy 50th anniversary to the Wilderness Act! Here's a great wilderness photo from <a href="https://twitter.com/YosemiteNPS">@YosemiteNPS</a>. <a href="https://twitter.com/hashtag/Wilderness50?src=hash">#Wilderness50</a> <a href="http://t.co/HMhbyTg18X">pic.twitter.com/HMhbyTg18X</a></p>— US Dept of Interior (@Interior) <a href="https://twitter.com/Interior/status/507185938620219395">September 3, 2014</a>
-</blockquote>
 </div>
 
 </section>

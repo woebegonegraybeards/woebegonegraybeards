@@ -97,6 +97,12 @@ footer {
 
 .feed {
   background: #fff;
+  margin: 0 auto;
+  max-width: 550px;
+}
+
+.feed-post {
+  margin: 20px auto;
 }
 
 .btn {

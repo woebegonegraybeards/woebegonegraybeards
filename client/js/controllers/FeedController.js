@@ -1,4 +1,4 @@
-angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram) {
+angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram, $timeout) {
   // $scope.getTwitterData = function() {
   //   Twitter.getData().then(function(results) {
   //     $scope.twitterData = results.data;
@@ -105,6 +105,20 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     
     console.log('after sort: ', $scope.sorted);
   };
+
+  $scope.refreshWidgets = function() {
+    $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+      
+    $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
+
+
+    $timeout(function() {
+      console.log('refreshing...');
+      $scope.refreshWidgets();
+    }, 3000);
+  };
+
+  $scope.refreshWidgets();
   
 });
 
