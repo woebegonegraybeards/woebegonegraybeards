@@ -121,7 +121,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     
     $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
 
-  }, 3000);
+  }, 2500);
   
 });
 
