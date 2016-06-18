@@ -149,6 +149,22 @@ input[type='text'] {
   width: 100%;
 }
 
+#spinner {
+  background: #fff;
+  border-radius: 5px;
+  opacity: 1;
+  padding: 10px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+}
+
+#spinner.ng-hide {
+  opacity: 0;
+}
+
 .twitter-tweet {
   display: inline-block;
   padding: 16px;
@@ -189,6 +205,28 @@ input[type='text'] {
   width:calc(100% - 2px);
 }
 
+.feed-post {
+  position: relative;
+}
+
+.feed-post.ng-enter {
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  bottom: -10px;
+}
+
+.feed-post.ng-enter-active {
+  opacity: 1;
+  bottom: 0;
+}
+
 .green-check {
   margin: 0px 0 -6px 5px;
 }
+
+
+
+.ng-hide-add, ng.hide-remove {
+  transition: all 0.3s ease-out;
+}
+

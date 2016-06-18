@@ -453,6 +453,23 @@ input[type='text'] {
   padding: 5px;
   width: 100%;
 }
+#spinner {
+  background: #fff;
+  border-radius: 5px;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  padding: 10px;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  width: 120px;
+}
+#spinner.ng-hide {
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+}
 .twitter-tweet {
   display: inline-block;
   padding: 16px;
@@ -491,6 +508,26 @@ input[type='text'] {
   width:-webkit-calc(100% - 2px);
   width:calc(100% - 2px);
 }
+.feed-post {
+  position: relative;
+}
+.feed-post.ng-enter {
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  bottom: -10px;
+}
+.feed-post.ng-enter-active {
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  bottom: 0;
+}
 .green-check {
   margin: 0px 0 -6px 5px;
 }
+.ng-hide-add, ng.hide-remove {
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
