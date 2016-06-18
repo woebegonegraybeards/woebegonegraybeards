@@ -1,11 +1,10 @@
-angular.module('ff.controllers').controller('MainController', function($scope, Feed, TwitterCheck, InstagramCheck) {
+angular.module('ff.controllers').controller('MainController', function($scope, Feed, TwitterCheck, InstagramCheck, $timeout) {
+  $scope.twitterCheckShow = false;          // Hides check mark until we're authorized
+  $scope.instagramCheckShow = false;        // Hides check mark until we're authorized
   
   $scope.processSearch = function(query) {
     Feed.setQuery(query);
   }; 
-  
-  $scope.twitterCheckShow = false;          // Hides check mark until we're authorized
-  $scope.instagramCheckShow = false;        // Hides check mark until we're authorized
   
   $scope.checkAuths = function(){
     
@@ -30,4 +29,5 @@ angular.module('ff.controllers').controller('MainController', function($scope, F
       });
       
   }();    // Invoke this function on page load
+
 });

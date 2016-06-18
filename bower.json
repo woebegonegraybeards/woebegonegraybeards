@@ -21,6 +21,10 @@
     "angular-ui-router": "latest",
     "angular-animate": "latest",
     "underscore": "^1.8.3",
-    "jquery": "^3.0.0"
+    "jquery": "^3.0.0",
+    "angular-sanitize": "^1.5.7"
+  },
+  "resolutions": {
+    "angular": "1.5.7"
   }
 }

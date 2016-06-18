@@ -1,4 +1,6 @@
 angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram, $timeout) {
+  $scope.loading = true;
+
   // $scope.getTwitterData = function() {
   //   Twitter.getData().then(function(results) {
   //     $scope.twitterData = results.data;
@@ -106,6 +108,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     $scope.sorted = $scope.reverseSort.reverse();
     
     console.log('after sort: ', $scope.sorted);
+    $scope.loading = false;
   };
 
   $scope.refreshWidgets = function() {
@@ -118,7 +121,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     
     $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
 
-  }, 3000);
+  }, 2500);
   
 });
 
