@@ -107,18 +107,16 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
   };
 
   $scope.refreshWidgets = function() {
-    $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
-      
-    $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
-
-
-    $timeout(function() {
-      console.log('refreshing...');
-      $scope.refreshWidgets();
-    }, 3000);
+    
   };
 
-  $scope.refreshWidgets();
+  $timeout(function() {
+    console.log('calling widget: ');
+    $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+    
+    $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
+
+  }, 3000);
   
 });
 
