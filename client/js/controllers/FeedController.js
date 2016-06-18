@@ -107,7 +107,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
   };
 
   $scope.refreshWidgets = function() {
-    
+
   };
 
   $timeout(function() {

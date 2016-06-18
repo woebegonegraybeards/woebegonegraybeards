@@ -5,7 +5,7 @@
     <blockquote ng-if="post.source_network=='twitter'" class="twitter-tweet">
     
     <!-- TWITTER -->
-    <p>{{ post.text }}<a></a><a></a></p>— {{ post.user.name }} (@{{ post.user.screen_name }})
+    <p>{{ post.text }}<a></a><a></a></p>— {{ post.user.name }} (<a ng-href="http://twitter.com/{{post.user.screen_name}}">@{{ post.user.screen_name }}</a>)
     <a>{{ post.created_at * 1000 | date: 'MMMM d, yyyy' }}</a>
     </blockquote>
     <blockquote ng-if="post.source_network=='instagram'" class="instagram-media">
