@@ -99,9 +99,11 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
       $scope.unsorted.push(val);      // Pushes each tweet into the unsorted array
     });
     
-    $scope.sorted = _.sortBy($scope.unsorted, function(val){    // Creates a sorted array out of unsorted array
+    $scope.reverseSort = _.sortBy($scope.unsorted, function(val){    // Creates a sorted array out of unsorted array
       return val.created_at;                                    // This new array is sorted by created_at property
     });
+    
+    $scope.sorted = $scope.reverseSort.reverse();
     
     console.log('after sort: ', $scope.sorted);
   };
