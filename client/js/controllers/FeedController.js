@@ -1,4 +1,4 @@
-angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram, $timeout) {
+angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram, $timeout, $q) {
   $scope.loading = true;
 
   // $scope.getTwitterData = function() {
@@ -108,20 +108,32 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     $scope.sorted = $scope.reverseSort.reverse();
     
     console.log('after sort: ', $scope.sorted);
-    $scope.loading = false;
   };
 
   $scope.refreshWidgets = function() {
-
+    twttr.widgets.load();
+    instgrm.Embeds.process();
   };
 
-  $timeout(function() {
-    console.log('calling widget: ');
-    $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
-    
-    $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
+  var twitterWidget = Feed.getTwitterWidget();
+  var instagramWidget = Feed.getInstagramWidget();
 
-  }, 2500);
+  $q.all([twitterWidget, instagramWidget]).then(function(results) {
+    $timeout(function() {
+      $scope.refreshWidgets();
+      $scope.loading = false;
+    }, 2500);
+  });
+
+  // $timeout(function() {
+  //   console.log('calling widget: ');
+  //   $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true});
+    
+  //   $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true});
+  //   $scope.refreshWidgets();
+  //   $scope.loading = false;
+  // }, 2500);
+
   
 });
 
