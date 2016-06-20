@@ -26,6 +26,7 @@ var settings = require('./client/assets/css/src/_settings');
 var processors = [
   postcssImport,
   simpleVars,
+  clearfix,
   simpleMediaQueries(settings.simpleMediaQueries),
   map(settings.map),
   nested,
@@ -35,7 +36,6 @@ var processors = [
   // precss,
   autoprefixer({ browsers: ["last 2 version", "safari 5", "ie > 9", "opera 12.1", "ios 6", "android 2.3"] }),
   // neat,
-  clearfix,
   // mixins,
   grid(settings.grid),
   reset

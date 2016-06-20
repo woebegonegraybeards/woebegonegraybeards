@@ -1,2 +1,2 @@
 <p ng-bind-html="post.text | tweetLinky:'_blank'"></p>— {{ post.user.name }} (<a ng-href="https://twitter.com/{{post.user.screen_name}}" target="_blank">@{{ post.user.screen_name }}</a>)
-    <a ng-href="https://twitter.com/{{post.user.screen_name}}/status/{{post.id_str}}" target="_blank">{{ post.created_at * 1000 | date: 'MMMM d, yyyy' }}</a>
+    <a ng-href="https://twitter.com/{{post.user.screen_name}}/status/{{post.id_str}}" target="_blank">{{ post.created_at | date: 'MMMM d, yyyy' }}</a>

@@ -26,8 +26,6 @@ ff.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $url
 
 }]);
 
-// ff.run(['$state', function($state) {}]);
-
 /* https://gist.github.com/rishabhmhjn/7028079 */
 ff.filter('tweetLinky',['$filter', '$sce',
   function($filter, $sce) {
