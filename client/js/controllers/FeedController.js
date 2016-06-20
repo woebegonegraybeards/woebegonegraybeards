@@ -72,23 +72,30 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
           min = str.substring(14,16),
           sec = str.substring(17,19);
       var mnths = { 
-        Jan:"01", Feb:"02", Mar:"03", Apr:"04", May:"05", Jun:"06",
-        Jul:"07", Aug:"08", Sep:"09", Oct:"10", Nov:"11", Dec:"12" };
+        Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+        Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+        console.log('epoch time: ', year, mnths[mon], day, hour, min, sec);
       return Date.UTC(year, mnths[mon], day, hour, min, sec);
     };
     
     instagram.forEach(function(val){    // Converts Instagram created_time to uniform dat with Twitter
       var time = val.created_time;
       val.source_network = 'instagram';
-      val.created_at = parseInt(time);
+      val.created_at = parseInt(time) * 1000;
     });
 
     twitter.forEach(function(val){      // Converts Twitter created_at to epoch time to match Instagram
-      var time = val.user.created_at;
+      var time = val.created_at;
+      val.time_string = time;
+      var offset = val.user.utc_offset;
+      var epochTime = epochConverter(time);                  // Converts created_at string to an epoch time integer
+      var correctedTime = epochTime;
+      // console.log('correctedTime: ', correctedTime);
+      var time2 = correctedTime.toString().substring(0,11);  // Makes the epoch time 10 digits like Instagram
+      // console.log('time2: ', time2);
       val.source_network = 'twitter';                         // Adds a source_network property
-      val.created_at = epochConverter(time);                  // Converts created_at string to an epoch time integer
-      var time2 = val.created_at.toString().substring(0,10);  // Makes the epoch time 10 digits like Instagram
-      val.created_at = parseInt(time2);                       // Turns epoch time to a string again after last line
+      val.created_at = parseInt(correctedTime);                       // Turns epoch time to a string again after last line
+      // console.log('-----------------------: ');
     });
     
     $scope.unsorted = [];             // Creates unsorted array
@@ -108,6 +115,10 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     $scope.sorted = $scope.reverseSort.reverse();
     
     console.log('after sort: ', $scope.sorted);
+    
+    $scope.sorted.forEach(function(val){
+      console.log('TIME: ', val.created_at);
+    });
   };
 
   $scope.refreshWidgets = function() {

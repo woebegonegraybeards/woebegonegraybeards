@@ -63,9 +63,9 @@ module.exports = function(app) {
     var query = req.body.search;
     
     if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
-      
+      // since_id: 744004317619716100
       // twitter.getTimeline('home',                              // Makes home time line request
-      twitter.search( { q: query, count: 10, since_id: 744004317619716100, result_type: 'recent' }, // Number of Tweets requested
+      twitter.search( { q: '%23' + query, count: 10, result_type: 'recent' }, // Number of Tweets requested
                           req.session.twitter.accessToken,        // Passes session accessToken
                           req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
                           function(err, data, response){
