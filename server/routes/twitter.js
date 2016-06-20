@@ -61,25 +61,23 @@ module.exports = function(app) {
     
     // Parse our req.body for query
     var query = req.body.search;
-    
-    if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
-      // since_id: 744004317619716100
-      // twitter.getTimeline('home',                              // Makes home time line request
-      twitter.search( { q: '%23' + query, count: 10, result_type: 'recent' }, // Number of Tweets requested
-                          req.session.twitter.accessToken,        // Passes session accessToken
-                          req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
-                          function(err, data, response){
-        console.log('API: Twitter -----------------------------' );
-        console.log('>>>>>>>>>>>>>> Twitter Data: ', data.statuses);
-
-        res.json(data.statuses);                 // Sends data back to front-end
-    
-      });
-      
+    if ( req.session.twitter ){
+      if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
+        // since_id: 744004317619716100
+        // twitter.getTimeline('home',                              // Makes home time line request
+        twitter.search( { q: '%23' + query, count: 10, result_type: 'recent' }, // Number of Tweets requested
+                            req.session.twitter.accessToken,        // Passes session accessToken
+                            req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
+                            function(err, data, response){
+          // console.log('API: Twitter -----------------------------' );
+          // console.log('>>>>>>>>>>>>>> Twitter Data: ', data.statuses);
+          res.json(data.statuses);                 // Sends data back to front-end
+        });
+      } else {
+        res.send(404, undefined); // Sends back undefined if you're not authorized
+      }
     } else {
-      // If not authenticated DO SOMETHING
-      res.json({'Error': "Sorry you're not authorized for Twitter"});
-      // res.send(404, "Sorry you're not authorized for Twitter");
+      res.send(404, undefined); // Sends back undefined if you don't have a twitter session
     }
   });
   
