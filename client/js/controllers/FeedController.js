@@ -74,13 +74,14 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
       var mnths = { 
         Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
         Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+        console.log('epoch time: ', year, mnths[mon], day, hour, min, sec);
       return Date.UTC(year, mnths[mon], day, hour, min, sec);
     };
     
     instagram.forEach(function(val){    // Converts Instagram created_time to uniform dat with Twitter
       var time = val.created_time;
       val.source_network = 'instagram';
-      val.created_at = parseInt(time);
+      val.created_at = parseInt(time) * 1000;
     });
 
     twitter.forEach(function(val){      // Converts Twitter created_at to epoch time to match Instagram
@@ -88,10 +89,13 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
       val.time_string = time;
       var offset = val.user.utc_offset;
       var epochTime = epochConverter(time);                  // Converts created_at string to an epoch time integer
-      var correctedTime = epochTime + offset;
-      var time2 = correctedTime.toString().substring(0,10);  // Makes the epoch time 10 digits like Instagram
+      var correctedTime = epochTime;
+      // console.log('correctedTime: ', correctedTime);
+      var time2 = correctedTime.toString().substring(0,11);  // Makes the epoch time 10 digits like Instagram
+      // console.log('time2: ', time2);
       val.source_network = 'twitter';                         // Adds a source_network property
-      val.created_at = parseInt(time2);                       // Turns epoch time to a string again after last line
+      val.created_at = parseInt(correctedTime);                       // Turns epoch time to a string again after last line
+      // console.log('-----------------------: ');
     });
     
     $scope.unsorted = [];             // Creates unsorted array
@@ -110,7 +114,11 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     
     $scope.sorted = $scope.reverseSort.reverse();
     
-    // console.log('after sort: ', $scope.sorted);
+    console.log('after sort: ', $scope.sorted);
+    
+    $scope.sorted.forEach(function(val){
+      console.log('TIME: ', val.created_at);
+    });
   };
 
   $scope.refreshWidgets = function() {
