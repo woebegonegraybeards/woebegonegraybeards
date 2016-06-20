@@ -137,13 +137,20 @@ footer {
   transition: all 0.3s ease-out;
 }
 
-.btn-primary {
+.btn-primary[disabled] {
+  background-color: transparent;
+  border-color: color($gray a(50%));
+  color: color($gray a(50%));
+  cursor: not-allowed;
+}
+
+.btn-primary:not([disabled]) {
   background-color: transparent;
   border-color: $gray;
   color: $gray;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not([disabled]) {
   background-color: $gray;
   color: #fff;
 }
@@ -170,15 +177,42 @@ footer {
   margin-bottom: 0;
 }
 
+fieldset {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
 input[type='text'] {
   border: solid 1px $light-gray;
   border-radius: 5px;
   font: inherit;
   margin: 0 auto 20px;
-  padding: 5px;
-  text-align: center;
+  padding: 5px 10px;
   width: 100%;
 }
+
+.query-input-group {
+  border: 0;
+  clear: fix;
+  display: block;
+  grid-column: 12/12;
+  margin: 0;
+  padding: 0;
+}
+
+.query-input-group label {
+  float: left;
+  font-size: 1.5em;
+  grid-column: 1/12;
+}
+
+.query-input-group input {
+  float: right;
+  grid-column: 11/12 !last
+}
+
 
 #spinner {
   background: #fff;
@@ -258,3 +292,25 @@ input[type='text'] {
   transition: all 0.3s ease-out;
 }
 
+.alert-container {
+  clear: both;
+}
+
+.alert {
+  /*border-radius: 10px;*/
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.alert-invalid {
+  background: color($red w(+75%) s(+40%));
+  border: solid 1px $red;
+  color: $red;
+}
+
+.alert-warning {
+  background: color($yellow w(+75%) s(+40%));
+  border: solid 1px $yellow;
+  color: $yellow;
+}

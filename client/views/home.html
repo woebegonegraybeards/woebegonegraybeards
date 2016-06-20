@@ -5,12 +5,23 @@
 </div>
 
 <div class="login">  
-  <a href="auth/twitter" class="btn btn-twitter">Twitter <img src='./assets/img/green-check.png' ng-show='twitterCheckShow' class='green-check' width='25px' height='25px' /> </a>
-  <a href="auth/instagram" class="btn btn-instagram">Instagram <img src='./assets/img/green-check.png' ng-show='instagramCheckShow' class='green-check instagramcheck' width='25px' height='25px' /> </a>
-  <form name="search">
-    <!-- <label for="query">Search a tag:</label> -->
-    <input type="text" id="query" placeholder="Search for a tag..." ng-model="query">
-    <button type="submit" ui-sref="feed" ng-click="processSearch(query)" class="btn btn-primary">Fuse Feeds</button>
+  <a href="auth/twitter" class="btn btn-twitter">Authorize with Twitter <img src='./assets/img/green-check.png' ng-show='twitterCheckShow' class='green-check' width='25px' height='25px' /> </a>
+  <a href="auth/instagram" class="btn btn-instagram">Authorize with Instagram <img src='./assets/img/green-check.png' ng-show='instagramCheckShow' class='green-check instagramcheck' width='25px' height='25px' /> </a>
+  <form name="search" novalidate>
+    <div class="query-input-group">
+      <fieldset>
+        <label for="query">#</label>
+        <input type="text" id="query" name="query" placeholder="Search for a tag..." ng-model="query" ng-pattern="/^[#a-zA-Z0-9]*$/g" required>
+      </fieldset>
+    </div>
+
+    <div class="alert-container">
+      <span class="alert alert-invalid" ng-show="search.query.$dirty && search.query.$invalid && search.query.$error.required">Query is required.</span>
+      <span class="alert alert-invalid" ng-show="search.query.$dirty && (twitterCheckShow == false && instagramCheckShow == false)">At least one authorized social media account is required.</span>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" ui-sref="feed" ng-click="processSearch(query)" ng-disabled="search.query.$pristine || (search.query.$invalid && search.query.$error.required) && (twitterCheckShow == false && instagramCheckShow == false)">Fuse Feeds</button>
   </form>
 </div>
 
