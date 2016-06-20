@@ -1,37 +1,6 @@
-angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram, $timeout, $q) {
-  $scope.loading = true;
-
-  // $scope.getTwitterData = function() {
-  //   Twitter.getData().then(function(results) {
-  //     $scope.twitterData = results.data;
-  //   }, function(error) {
-  //     console.error(error);
-  //   })
-  // };
-
-  // $scope.getInstagramData = function() {
-  //   Instagram.getData().then(function(results) {
-  //     $scope.instagramData = results.data;
-  //   }, function(error) {
-  //     console.error(error);
-  //   })
-  // };
-
-  // $scope.getTwitterData(); // Initial call
-  // $scope.getInstagramData(); // Initial call
-  // $scope.query = Feed.query;
-
-  // console.log($scope.query);
+angular.module('ff.controllers').controller('FeedController', function($scope, Feed, Twitter, Instagram, $timeout, $q, $state) {
   
-  // Word.GET()
-  //       .then( function( res ){
-  //         $scope.allWords = res;
-  //       })
-  //       .catch(function( err ) {
-  //         console.error(err);
-  //       });
-  // $scope.twitterData = null;
-  // $scope.instagramData = null;
+  $scope.loading = true;
 
   $scope.$watch(function() {
     return Feed.getQuery();
@@ -54,11 +23,31 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
           })                                                        // If we're not authorized, this will be set to undefined
           .then(function(){
             if ( $scope.twitterData !== undefined && $scope.instagramData !== undefined ){        // If both data sets exist
-              $scope.sort($scope.twitterData, $scope.instagramData);  // Invoke sort function with twitterData and instagramData
+              if ( $scope.twitterData.length <= 0 && $scope.instagramData.length <= 0 ){    // Check to make sure there are results
+                console.log('no results for either');
+                // redirect to home
+                // $window.location.href = '/';
+                $state.go('home')
+              } else {                                                  // If there are results
+                $scope.sort($scope.twitterData, $scope.instagramData);  // Invoke sort function with twitterData and instagramData
+              }
             } else if ( $scope.twitterData !== undefined && $scope.instagramData === undefined ) {  // If only Twitter data exists
-              $scope.sort($scope.twitterData, null);                  // Invoke only Twitter, pass null for Instagram
+              if ( $scope.twitterData.legnth <= 0 ){                  // Check to make sure there are results
+                console.log('no results for twitter');
+                // redirect to home
+                // $window.location.href = '/';
+                $state.go('home');
+              } else {                                                // If there are results
+                $scope.sort($scope.twitterData, null);                // Invoke only Twitter, pass null for Instagram
+              }
             } else if ( $scope.instagramData !== undefined && $scope.twitterData === undefined ) {  // If only Instagram data exists
-              $scope.sort(null, $scope.instagramData);                // Invoke only Instagram, pass null for Twitter
+              if ( $scope.instagramData.length <= 0 ){                // Check to make sure there are results
+                // redirect to home
+                // $window.location.href = '/';
+                $state.go('home');
+              } else {                                                // If there are results
+                $scope.sort(null, $scope.instagramData);              // Invoke only Instagram, pass null for Twitter
+              }
             }
           })
           .catch(function( err ) {
