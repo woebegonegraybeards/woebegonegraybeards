@@ -73,7 +73,6 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
   
   // Sort function organizes the API responses from Twitter and Instagram into one final sorted array
   $scope.sort = function( twitter, instagram ) {
-    
     $scope.unsorted = [];                 // Creates unsorted array
     
     var epochConverter = function(str){   // Designed to convert Twitters original user.created_at string into epoch time
@@ -126,24 +125,28 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     });
     
     $scope.sorted = $scope.reverseSort.reverse();   // Reverses sorted array so newest posts are on top
-    
+
+    $scope.callWidgets();
     // console.log('after sort: ', $scope.sorted);
   };
 
   $scope.refreshWidgets = function() {
     twttr.widgets.load();
     instgrm.Embeds.process();
+    $scope.loading = false;
   };
 
-  var twitterWidget = Feed.getTwitterWidget();
-  var instagramWidget = Feed.getInstagramWidget();
+  $scope.callWidgets = function() {
+    var twitterWidget = Feed.getTwitterWidget();
+    var instagramWidget = Feed.getInstagramWidget();
 
-  $q.all([twitterWidget, instagramWidget]).then(function(results) {
-    $timeout(function() {
-      $scope.refreshWidgets();
-      $scope.loading = false;
-    }, 2500);
-  });
+    $q.all([twitterWidget, instagramWidget]).then(function(results) {
+      $timeout(function() {
+        $scope.refreshWidgets();
+      }, 2500);
+    });
+  };
+
 
   // $timeout(function() {
   //   console.log('calling widget: ');

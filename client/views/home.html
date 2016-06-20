@@ -16,12 +16,12 @@
     </div>
 
     <div class="alert-container">
-      <span class="alert alert-invalid" ng-show="search.query.$dirty && search.query.$invalid && search.query.$error.required">Query is required.</span>
+      <span class="alert alert-invalid" ng-show="search.query.$dirty && search.query.$error.required">Query is required.</span>
       <span class="alert alert-invalid" ng-show="search.query.$dirty && (twitterCheckShow == false && instagramCheckShow == false)">At least one authorized social media account is required.</span>
-
+      <span class="alert alert-invalid" ng-show="search.query.$dirty && search.query.$invalid">Query is invalid (no special characters).</span>
     </div>
 
-    <button type="submit" class="btn btn-primary" ui-sref="feed" ng-click="processSearch(query)" ng-disabled="search.query.$pristine || (search.query.$invalid && search.query.$error.required) && (twitterCheckShow == false && instagramCheckShow == false)">Fuse Feeds</button>
+    <button type="submit" class="btn btn-primary" ui-sref="feed" ng-click="processSearch(query)" ng-disabled="search.query.$pristine || search.query.$invalid || (search.query.$invalid && search.query.$error.required) && (twitterCheckShow == false && instagramCheckShow == false)">Fuse Feeds</button>
   </form>
 </div>
 
