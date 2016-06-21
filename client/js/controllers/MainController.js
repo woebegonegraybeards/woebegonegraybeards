@@ -4,6 +4,7 @@ angular.module('ff.controllers').controller('MainController', function($scope, F
   
   $scope.processSearch = function(query) {
     Feed.setQuery(query);
+    Feed.setDataExists(true);
   }; 
   
   $scope.checkAuths = function(){
