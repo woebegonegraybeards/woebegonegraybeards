@@ -45,6 +45,8 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
                 // redirect to home
                 // $window.location.href = '/';
                 $state.go('home');
+                console.log('no data:');
+                Feed.setDataExists(false);
               } else {                                                // If there are results
                 $scope.sort(null, $scope.instagramData);              // Invoke only Instagram, pass null for Twitter
               }

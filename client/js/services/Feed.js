@@ -1,5 +1,6 @@
 angular.module('ff.services').service('Feed', function($http, $q) {
   var _query = '';
+  var dataExists = true;
   
   return {
     getQuery: function() {
@@ -43,6 +44,14 @@ angular.module('ff.services').service('Feed', function($http, $q) {
 
       return deferred.promise;
 
+    },
+
+    getDataExists: function () {
+      return dataExists;
+    },
+
+    setDataExists: function(bool) {
+      dataExists = bool;
     }
   };
 });
