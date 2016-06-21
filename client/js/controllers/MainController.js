@@ -30,4 +30,12 @@ angular.module('ff.controllers').controller('MainController', function($scope, F
       
   }();    // Invoke this function on page load
 
+  $scope.$watch(function() {
+    return Feed.getDataExists();
+  }, function(newVal, oldVal) {
+    if (newVal === false) {
+      $scope.dataExists = false;
+    }
+  });
+
 });
