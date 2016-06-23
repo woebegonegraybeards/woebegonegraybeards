@@ -8,13 +8,12 @@ var ff = angular.module('feedfuse', [
 ]);
 
 ff.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.when('', '/');
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.when('', '/'); // Initialize home route
+  $urlRouterProvider.otherwise('/'); // Default route
   
   $stateProvider
     .state('home', {
       url: '/',
-      // abstract: true,
       templateUrl: 'views/home.html',
       controller: 'MainController'
     })

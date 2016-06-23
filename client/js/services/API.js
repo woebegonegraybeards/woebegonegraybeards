@@ -1,8 +1,8 @@
-angular.module('ff.services').service('Twitter', function($q, $http) {
+angular.module('ff.services').service('Twitter', function($http) {
   var getData = function(query) {
     return $http({
       method: 'POST',
-      url: '/api/twitter/',
+      url: '/api/twitter/', // Makes request with query to server to call Twitter API
       data: JSON.stringify({search: query})
     }).then(function(data) {
       return data;
@@ -16,11 +16,11 @@ angular.module('ff.services').service('Twitter', function($q, $http) {
   };
 });
 
-angular.module('ff.services').service('Instagram', function($q, $http) {
+angular.module('ff.services').service('Instagram', function($http) {
   var getData = function(query) {
     return $http({
       method: 'POST',
-      url: '/api/instagram/',
+      url: '/api/instagram/', // Makes request with query to server to call Instagram API
       data: JSON.stringify({search: query})
     }).then(function(data) {
       return data;

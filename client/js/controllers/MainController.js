@@ -1,6 +1,6 @@
-angular.module('ff.controllers').controller('MainController', function($scope, Feed, TwitterCheck, InstagramCheck, $timeout) {
-  $scope.twitterCheckShow = false;          // Hides check mark until we're authorized
-  $scope.instagramCheckShow = false;        // Hides check mark until we're authorized
+angular.module('ff.controllers').controller('MainController', function($scope, Feed, TwitterCheck, InstagramCheck) {
+  $scope.twitterCheckShow = false; // Hides check mark until we're authorized
+  $scope.instagramCheckShow = false; // Hides check mark until we're authorized
   
   $scope.processSearch = function(query) {
     Feed.setQuery(query);
@@ -8,29 +8,26 @@ angular.module('ff.controllers').controller('MainController', function($scope, F
   }; 
   
   $scope.checkAuths = function(){
+    // Sends GET req to backend to check sessions auth for Twitter
+    TwitterCheck.checkAuth().then(function(result){
+      if (result.data === true) {
+        $scope.twitterCheckShow = true; // If Twitter is authorized, show check mark
+      };
+    }).catch(function(err) {
+      console.error(err);
+    });
     
-    TwitterCheck.checkAuth()                 // Sends GET req to backend to check sessions auth for Twitter
-      .then(function(result){
-        if ( result.data === true ) {
-          $scope.twitterCheckShow = true;    // If we have a Twitter is authorized, show check mark
-        }
-      })
-      .catch(function( err ) {
-        console.error(err);
-      });
-    
-    InstagramCheck.checkAuth()                // Sends GET req to backend to check sessions auth for Instagram
-      .then(function(result){
-        if ( result.data === true ) {
-          $scope.instagramCheckShow = true;   // If we have a Instagram is authorized, show check mark
-        }
-      })
-      .catch(function( err ) {
-        console.error(err);
-      });
-      
-  }();    // Invoke this function on page load
+    // Sends GET req to backend to check sessions auth for Instagram
+    InstagramCheck.checkAuth().then(function(result){
+      if (result.data === true) {
+        $scope.instagramCheckShow = true; // If Instagram is authorized, show check mark
+      };
+    }).catch(function(err) {
+      console.error(err);
+    });
+  };
 
+  // Watch for whether Feed lacks data to show 'no data found' alert
   $scope.$watch(function() {
     return Feed.getDataExists();
   }, function(newVal, oldVal) {
@@ -39,4 +36,5 @@ angular.module('ff.controllers').controller('MainController', function($scope, F
     }
   });
 
+  $scope.checkAuths(); // Invoke this function on controller load
 });
