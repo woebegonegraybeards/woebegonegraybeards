@@ -44,7 +44,6 @@
     "postcss-grid": "^2.0.0",
     "postcss-import": "^8.1.2",
     "postcss-map": "^0.8.0",
-    "postcss-neat": "^2.5.2",
     "postcss-nested": "^1.0.0",
     "postcss-opacity": "^3.0.0",
     "postcss-simple-media-queries": "^1.0.1",
