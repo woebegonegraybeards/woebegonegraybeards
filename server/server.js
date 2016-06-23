@@ -31,24 +31,6 @@ var twitterRouter     = express.Router();      // Creates Twitter Router
 var instagramRouter   = express.Router();      // Creates Instagram Router
 var facebookRouter    = express.Router();      // Creates Facebook Router
 
-// app.use(cookieSession({
-//   name: 'session',
-//   keys: ['key1', 'key2']
-// }));
-
-// app.use(function (req, res, next) {
-//   // Update views
-//   req.session.oauth = {};
-
-//   console.log('req.sess: ', req.session.oauth);
-  
-//   // Write response
-//   // res.end(200);
-  
-  
-// });
-
-
 // Prefixes all routes with /api
 app.use('/api', router);
 app.use('/auth/twitter', twitterRouter);

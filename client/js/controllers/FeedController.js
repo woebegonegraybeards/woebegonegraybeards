@@ -19,6 +19,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
         })
         .then(function(){
           Instagram.getData($scope.query).then(function(results) {  // Call Instagram API with query
+            // console.log('instagram results: ', results);
             $scope.instagramData = results.data.data;               // Stores the Instagram results array
           })                                                        // If we're not authorized, this will be set to undefined
           .then(function(){
@@ -27,7 +28,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
                 console.log('no results for either');
                 // redirect to home
                 // $window.location.href = '/';
-                $state.go('home')
+                $state.go('home');
               } else {                                                  // If there are results
                 $scope.sort($scope.twitterData, $scope.instagramData);  // Invoke sort function with twitterData and instagramData
               }
@@ -118,7 +119,7 @@ angular.module('ff.controllers').controller('FeedController', function($scope, F
     $scope.sorted = $scope.reverseSort.reverse();   // Reverses sorted array so newest posts are on top
 
     $scope.callWidgets();
-    // console.log('after sort: ', $scope.sorted);
+    console.log('after sort: ', $scope.sorted);
   };
 
   $scope.refreshWidgets = function() {

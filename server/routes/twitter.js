@@ -1,10 +1,10 @@
 
 // server/routes/twitter.js
 
-var express         = require('express');
-var expressSession  = require('express-session');
-var request         = require('request');
-var twitterAPI      = require('node-twitter-api');
+var express         = require('express');           // Express
+var expressSession  = require('express-session');   // This enables sessions for req
+var request         = require('request');           // Request is for node api calls
+var twitterAPI      = require('node-twitter-api');  // Node Twitter API module
 var Config          = require('../config/config');  // Contains API Keys
 
 var twitter = new twitterAPI({
@@ -26,25 +26,24 @@ module.exports = function(app) {
         req.session.twitter = {};                                     // Creates twitter session object
         req.session.twitter.requestToken = requestToken;              // Stores token in session
         req.session.twitter.requestTokenSecret = requestTokenSecret;  // Store tokenSecret in session
-        res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + requestToken);
-      }
+        res.redirect('https://twitter.com/oauth/authenticate?oauth_token=' + requestToken); // Redirects you to twitters
+      }                                                               // authentication page with your request token
     });
   });
   
-  // After you're authorized
+  // After you're authorized  - The redirect to twitter.com from /auth/twitter/ will then redirect you back to this route
   app.get('/auth/twitter/callback', function(req, res) {
     req.session.twitter.oauth_verifier = req.query['oauth_verifier']; // Stores oauth_verifier in session
-    twitter.getAccessToken(req.session.twitter.requestToken,
-                           req.session.twitter.requestTokenSecret, 
-                           req.session.twitter.oauth_verifier, 
+    twitter.getAccessToken(req.session.twitter.requestToken,          // Passes requestToken into getAccessToken
+                           req.session.twitter.requestTokenSecret,    // Passes requestTokenSecret into getAccessToken
+                           req.session.twitter.oauth_verifier,        // Passes oauth_verifer into getAccessToken
                            function(error, accessToken, accessTokenSecret, results) {
       if (error) {
-        console.log('ERROR: Twitter Callback');
-        console.log(' >>>>>>>>>', error.body);
+        console.log('Twitter Callback Error', error.body);
       } else {
         req.session.twitter.accessToken = accessToken;              // Stores accessToken in session
         req.session.twitter.accessTokenSecret = accessTokenSecret;  // Stores accessTokenSecret in session
-        res.redirect('/');                                           // Redirects to '/login' with both access tokens      
+        res.redirect('/');                                          // Redirects to '/login' with both access tokens      
       }
     });
   });
@@ -54,30 +53,31 @@ module.exports = function(app) {
   // More info on different twitter methods
   // https://www.npmjs.com/package/node-twitter-api
 
+  // Twitters API Docs for home timeline. Check for others
   // https://dev.twitter.com/rest/reference/get/statuses/home_timeline
   
   // 10 recent tweets from homepage
   app.post('/api/twitter', function(req, res) {
     
-    // Parse our req.body for query
-    var query = req.body.search;
-    if ( req.session.twitter ){
+    var query = req.body.search;    // Parse our req.body for query, this is the search term from the homepage
+    
+    if ( req.session.twitter ){                                     // Make sure a twitter session exists
       if ( req.session.twitter.accessToken !== undefined ){         // Checks if Twitter access token exists
-        // since_id: 744004317619716100
-        // twitter.getTimeline('home',                              // Makes home time line request
-        twitter.search( { q: '%23' + query, count: 10, result_type: 'recent' }, // Number of Tweets requested
+        twitter.search( { q: '%23' + query, count: 10, result_type: 'recent' },  // Runs node-twitter-api's search method
+                                                                    // Parameters: q = twitters query
+                                                                    // '%23' is # in the url
+                                                                    // Count is how many tweets you want
+                                                                    // Result_type is recent tweets
                             req.session.twitter.accessToken,        // Passes session accessToken
                             req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
                             function(err, data, response){
-          // console.log('API: Twitter -----------------------------' );
-          // console.log('>>>>>>>>>>>>>> Twitter Data: ', data.statuses);
-          res.json(data.statuses);                 // Sends data back to front-end
+          res.json(data.statuses);                                  // Sends data back to front-end
         });
       } else {
         res.send(404, undefined); // Sends back undefined if you're not authorized
       }
     } else {
-      res.send(404, undefined); // Sends back undefined if you don't have a twitter session
+      res.send(404, undefined);   // Sends back undefined if you don't have a twitter session
     }
   });
   

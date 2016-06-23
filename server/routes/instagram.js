@@ -55,9 +55,12 @@ module.exports = function(app) {
 
   // 
   app.post('/api/instagram', function(req, res) {
-    var query = req.body.search;
+    var query = req.body.search;               // Parse our req.body for query, this is the search term from the homepage
     request('https://api.instagram.com/v1/tags/' + query + '/media/recent?access_token=' + req.session.instagram.access_token + '&count=10', function (error, response, body) {
-      if (!error && response.statusCode == 200) {
+                                              // Above request code: Calls Instagram API, places query in url
+                                              // Includes the Instagram sessions access token
+                                              // Sets count to 10
+      if (!error && response.statusCode == 200) {   // If there is no error and
         console.log('Instagram WORK!!!', JSON.parse(body));
         res.json(JSON.parse(body));
       }
