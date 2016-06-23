@@ -1,6 +1,8 @@
 
 // server/config/auth.js
 
+// This file is never used. ------------------------------------------
+
 module.exports = {
 
   // https://github.com/jaredhanson/passport-twitter

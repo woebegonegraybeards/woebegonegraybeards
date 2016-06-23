@@ -2,15 +2,13 @@
 // server/server.js
 
 var express         = require('express');
-var expressSession  = require('express-session');
+var expressSession  = require('express-session'); // Used for storing our OAuth access_tokens
 var cookieParser    = require('cookie-parser');
 var app             = express();
 var bodyParser      = require('body-parser');
 var morgan          = require('morgan');       // used for logging incoming request
 var methodOverride  = require('method-override');
 var Config          = require('./config/config');  // Contains API Keys
-var twitterAPI      = require('node-twitter-api');
-// var cookieSession   = require('cookie-session');
 
 // Sets up our port, default is 5000
 var port = process.env.PORT || 5000;
@@ -23,7 +21,7 @@ app.use(express.static('client'));                                // Set the sta
 app.use(cookieParser());
 app.use(methodOverride('X-HTTP-Method-Override'));  // override with the X-HTTP-Method-Override header in the request. simulate DELETE/PUT
 app.use(express.static(__dirname + './client'));     // Set the static file location to /client
-app.use(expressSession({ secret: 'meow', resave: true, saveUninitialized: true }));
+app.use(expressSession({ secret: 'meow', resave: true, saveUninitialized: true })); // Sets up our express session resave value
 
 // Creates an instance of an express router
 var router            = express.Router();      // Creates Router
@@ -33,12 +31,12 @@ var facebookRouter    = express.Router();      // Creates Facebook Router
 
 // Prefixes all routes with /api
 app.use('/api', router);
-app.use('/auth/twitter', twitterRouter);
-app.use('/api/twitter', twitterRouter);
-app.use('/auth/instagram', instagramRouter);
-app.use('/api/instagram', instagramRouter);
-app.use('/auth/facebook', facebookRouter);
-app.use('/auth/facebook', facebookRouter);
+app.use('/auth/twitter', twitterRouter);        // Sets /auth/twitter/ route to use twitterRouter
+app.use('/api/twitter', twitterRouter);         // Sets /api/twitter/ route to use twitterRouter
+app.use('/auth/instagram', instagramRouter);    // Sets /auth/instagram/ route to use instagramRouter
+app.use('/api/instagram', instagramRouter);     // Sets /api/instagrapm/ route to use instagramRouter
+app.use('/auth/facebook', facebookRouter);      // Not currently in use
+app.use('/auth/facebook', facebookRouter);      // Not currently in use
 
 // Configures our routes
 require('./routes/routes.js')(app);
