@@ -1,6 +1,6 @@
-angular.module('ff.services').service('Feed', function($http, $q) {
+angular.module('ff.services').service('Feed', function($q) {
   var _query = '';
-  var dataExists = true;
+  var dataExists = true; // Flag for whether APIs returned data
   
   return {
     getQuery: function() {
@@ -13,37 +13,34 @@ angular.module('ff.services').service('Feed', function($http, $q) {
 
     getTwitterWidget: function() {
       var deferred = $q.defer();
-      $.ajax({ url: 'http://platform.twitter.com/widgets.js', dataType: 'script', cache:true}).done(function(data) {
+
+      // $.ajax is jQuery AJAX request, used to retain dataType
+      // Could probably be refactored to use $http
+      $.ajax({
+        url: 'http://platform.twitter.com/widgets.js',
+        dataType: 'script',
+        cache: true
+      }).done(function(data) {
         deferred.resolve(data);
       });
-
-      // $http.get('http://platform.twitter.com/widgets.js', {
-      //   cache: true
-      // }).then(function(script) {
-      //   deferred.resolve(script);
-      // }, function(error) {
-      //   deferred.reject(error);
-      // });
 
       return deferred.promise;
     },
 
     getInstagramWidget: function() {
       var deferred = $q.defer();
-      $.ajax({ url: 'http://platform.instagram.com/en_US/embeds.js', dataType: 'script', cache:true}).then(function(data) {
+
+      // $.ajax is jQuery AJAX request, used to retain dataType
+      // Could probably be refactored to use $http
+      $.ajax({
+        url: 'http://platform.instagram.com/en_US/embeds.js',
+        dataType: 'script',
+        cache: true
+      }).then(function(data) {
         deferred.resolve(data);
       });
 
-      // $http.get('http://platform.instagram.com/en_US/embeds.js', {
-      //   cache: true
-      // }).then(function(script) {
-      //   deferred.resolve(script);
-      // }, function(error) {
-      //   deferred.reject(error);
-      // });
-
       return deferred.promise;
-
     },
 
     getDataExists: function () {

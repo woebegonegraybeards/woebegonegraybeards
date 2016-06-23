@@ -26,8 +26,6 @@ body {
   padding: 0 20px;
   position: relative;
   overflow: hidden;
-
-  /*grid-column: 12/12;*/
 }
 
 footer {
@@ -286,8 +284,6 @@ input[type='text'] {
   margin: 0px 0 -6px 5px;
 }
 
-
-
 .ng-hide-add, ng.hide-remove {
   transition: all 0.3s ease-out;
 }
@@ -297,7 +293,6 @@ input[type='text'] {
 }
 
 .alert {
-  /*border-radius: 10px;*/
   display: block;
   margin-bottom: 20px;
   padding: 10px;
