@@ -5,25 +5,22 @@ View all your social feeds in one place!
 ## Team
 
   - __Product Owner__: Brett Celestre
-  - __Scrum Master__: Brett Celestre
+  - __Scrum Master__: Andrew Tsao
   - __Development Team Members__: Brett Celestre, Andrew Tsao
 
 ## Table of Contents
 
 1. [Usage](#usage)
-1. [Requirements](#requirements)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
+    1. [Configuration File](#configuration-file)
+    1. [Authorizing Instagram](#authorizing-instagram)
+    1. [Node Modules Used](#node-modules-used)
     1. [Tasks](#tasks)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
 <!-- ## Usage -->
-
-## Requirements
-
-- Express 4.13.4
-- Angular
 
 ## Development
 
@@ -64,8 +61,6 @@ module.exports = {
 
 ### Authorizing Instagram
 
-YOU HAVE TO DO THIS BEFORE ANYTHING TO AUTH INSTAGRAM PUBLIC CONTENT REQUESTS
-
 After creating your Instagram App and formatting your config.js file you have to go to this URL for your app to properly authenticate.
 Don't forget to place in your client_id
 
@@ -80,9 +75,11 @@ https://www.instagram.com/developer/sandbox/
 ### Node Modules Used
 
 **node-twitter-api**
+
 [https://www.npmjs.com/package/node-twitter-api](https://www.npmjs.com/package/node-twitter-api)
 
 **instagram-node**
+
 [https://www.npmjs.com/package/instagram-node](https://www.npmjs.com/package/instagram-node)
 
 
