@@ -2,7 +2,7 @@
 // server/routes/routes.js
 
 var twitterAPI      = require('node-twitter-api');
-var Config          = require('../config/config');  // Contains API Keys
+var Config          = require('../config/env');  // Contains API Keys
 
 module.exports = function(app) {
 
