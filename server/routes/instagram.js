@@ -4,7 +4,7 @@
 var express         = require('express');
 var expressSession  = require('express-session');
 var request         = require('request');
-var Config          = require('../config/config');            // Contains API Keys
+var Config          = require('../config/env');            // Contains API Keys
 var ig              = require('instagram-node').instagram();  // Requires ig package
 
 // https://www.npmjs.com/package/instagram-node
@@ -15,7 +15,8 @@ ig.use({                                         // Sets our ig client_id and cl
 });
 
 // Sets a redirect url for our authorization
-var ig_redirect_uri = 'http://127.0.0.1:5000/auth/instagram/callback';
+// var ig_redirect_uri = 'http://127.0.0.1:5000/auth/instagram/callback';
+var ig_redirect_uri = 'http://feedfuse.herokuapp.com/auth/instagram/callback';
 
 module.exports = function(app) {
   
@@ -56,6 +57,8 @@ module.exports = function(app) {
   
   // YOU HAVE TO DO THIS BEFORE ANYTHING TO AUTH INSTAGRAM PUBLIC CONTENT REQUESTS
   // https://www.instagram.com/oauth/authorize/?client_id=d4767b89c3f4466cbaafab1abed7d151&redirect_uri=http://127.0.0.1:5000/auth/instagram/callback&response_type=code&scope=public_content
+  // https://www.instagram.com/oauth/authorize/?client_id=d4767b89c3f4466cbaafab1abed7d151&redirect_uri=http://feedfuse.herokuapp.com/auth/instagram/callback&response_type=code&scope=public_content
+  
   
   //           /\
   //          /  \  Read the above
@@ -74,7 +77,7 @@ module.exports = function(app) {
     request('https://api.instagram.com/v1/tags/' + query + '/media/recent?access_token=' + req.session.instagram.access_token + '&count=10', function (error, response, body) {
                                               // Sets count to 10. Check Instagram's docs for more parameters.
       if (!error && response.statusCode == 200) {   // If there is no error and
-        // console.log('Instagram WORK!!!', JSON.parse(body));  // Console logs the API results to the server
+        console.log('Instagram WORK!!!', JSON.parse(body));  // Console logs the API results to the server
         res.json(JSON.parse(body));           // Sends back the API results to the front-end - FeedController.js line 21-23
       }
     });

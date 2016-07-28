@@ -5,13 +5,15 @@ var express         = require('express');           // Express
 var expressSession  = require('express-session');   // This enables sessions for req
 var request         = require('request');           // Request is for node api calls
 var twitterAPI      = require('node-twitter-api');  // Node Twitter API module, read docs for more information
-var Config          = require('../config/config');  // Contains API Keys
+var Config          = require('../config/env');     // Contains API Keys
 
 var twitter = new twitterAPI({                              // Creates a new instance of our 'node-twitter-api' module
   consumerKey: Config.twitterConfig.key,                    // FeedFuse app key
   consumerSecret: Config.twitterConfig.secret,              // FeedFuse app secret key
-  callback: "http://127.0.0.1:5000/auth/twitter/callback"   // Redirect-callback URL after /auth/twitter redirect passes
+  // callback: "http://127.0.0.1:5000/auth/twitter/callback"   // Redirect-callback URL after /auth/twitter redirect passes
+  callback: "http://feedfuse.herokuapp.com//auth/twitter/callback"   // Redirect-callback URL after /auth/twitter redirect passes  
 });
+
   
 module.exports = function(app) {
   
@@ -67,6 +69,7 @@ module.exports = function(app) {
                           req.session.twitter.accessToken,        // Passes session accessToken
                           req.session.twitter.accessTokenSecret,  // Passes session accessTokenSecret
                           function(err, data, response){
+          // console.log('data: ', data);
           res.json(data.statuses);                                // Sends data back to front-end
         });
       } else {

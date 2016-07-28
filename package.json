@@ -4,7 +4,8 @@
   "description": "View all your social media in one feed",
   "main": "server/server.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",

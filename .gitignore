@@ -32,7 +32,8 @@ npm-debug.log
 node_modules
 
 ### Config ###
-**/config/
+**/config/config.js
+**/config/auth.js
 
 ### Bower ###
 **/bower_components/
