@@ -8,7 +8,7 @@ var app             = express();
 var bodyParser      = require('body-parser');
 var morgan          = require('morgan');       // used for logging incoming request
 var methodOverride  = require('method-override');
-var Config          = require('./config/config');  // Contains API Keys
+var Config          = require('./config/env');  // Contains API Keys
 
 // Sets up our port, default is 5000
 var port = process.env.PORT || 5000;
