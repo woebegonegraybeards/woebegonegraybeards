@@ -11,7 +11,7 @@ var twitter = new twitterAPI({                              // Creates a new ins
   consumerKey: Config.twitterConfig.key,                    // FeedFuse app key
   consumerSecret: Config.twitterConfig.secret,              // FeedFuse app secret key
   // callback: "http://127.0.0.1:5000/auth/twitter/callback"   // Redirect-callback URL after /auth/twitter redirect passes
-  callback: "http://feedfuse.herokuapp.com//auth/twitter/callback"   // Redirect-callback URL after /auth/twitter redirect passes  
+  callback: "http://feedfuse.herokuapp.com/auth/twitter/callback"   // Redirect-callback URL after /auth/twitter redirect passes  
 });
 
   
